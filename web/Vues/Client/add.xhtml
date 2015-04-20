@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Gestion des poles</title>
+</head>
+
+    <body>
+        <!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+        <ui:composition template="/Vues/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Redefinition du contenu du template  -->
+                 <div id="page-wrapper" >
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            
+                            <h1>Gestion des Clients </h1>
+
+
+                            <h:form>
+                                
+                                <h1><h:outputText value="Create/Edit"/></h1>
+<!--                                <p:growl id="growl" showDetail="true" sticky="true" />  -->
+                                <p:panel header="ajout" style="width: 300px"> 
+                                    <h:panelGrid columns="2" cellpadding="5"> 
+                                        <p:outputLabel value="Nom:" for="nom" />
+                                        <p:inputText id="nom" value="#{clientControler.client.nom}" title="Nom" required="true" />
+                                        <p:outputLabel value="Solde:" for="solde" />
+                                        <p:inputText id="solde" value="#{clientControler.client.solde}" title="Solde" required="true" />
+                                    </h:panelGrid>
+                                    <p:commandButton value="Ajouter"  action="#{clientControler.save()}" />
+                                </p:panel> 
+                            </h:form>
+                            <!--                            <h2>Blank Page</h2>   
+                                                        <h5>Welcome Jhon Deo , Love to see you back. </h5>-->
+                            <p:dataTable var="client" value="#{clientControler.clts}">
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{client.id}" />
+                                </p:column>
+
+                                <p:column headerText="Year">
+                                    <h:outputText value="#{client.nom}" />
+                                </p:column>
+
+                                <p:column headerText="Brand">
+                                    <h:outputText value="#{client.solde}" />
+                                </p:column>
+
+                              
+                            </p:dataTable>
+
+                        </div>
+                    </div>
+                    <!-- /. ROW  -->
+                    <hr />
+
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+            </ui:define>
+
+
+        </ui:composition>
+    </body>
+</html>

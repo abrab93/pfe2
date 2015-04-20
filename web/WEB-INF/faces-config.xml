@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    
+    <application>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+    </application>
+    
+<!--    <navigation-rule>
+		<display-name>Vues/Poles/index.xhtml</display-name>
+		<from-view-id>/Vues/Poles/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ajouter_pole</from-outcome>
+			<to-view-id>/Vues/Poles/add.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>Vues/Poles/add.xhtml</display-name>
+		<from-view-id>/Vues/Poles/add.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/Vues/Poles/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>Vues/Poles/index2.xhtml</display-name>
+		<from-view-id>/Vues/Poles/index2.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ajouter_test</from-outcome>
+			<to-view-id>/Vues/Poles/add.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>-->
+    
+</faces-config>

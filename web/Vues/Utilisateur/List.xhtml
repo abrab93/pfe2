@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Gestion des poles</title>
+</head>
+
+    <body>
+        <!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+        <ui:composition template="/Vues/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Redefinition du contenu du template  -->
+                <div id="page-wrapper" >
+                    <div id="page-inner">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <h1>List des utilisateurs </h1>
+                                
+                                <p:dataTable id="users" var="user" value="#{utilisateurControler.users}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                                    
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{user.idUtilisateur}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nom Utilisateur">
+                                        <h:outputText value="#{user.nomUtilisateur}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nom et Prenom">
+                                        <h:outputText value="#{user.nomPrenom}" />
+                                    </p:column>
+
+                                    <p:column headerText="Password">
+                                        <h:outputText value="#{user.passWord}" />
+                                    </p:column>
+                                    <p:column headerText="Email">
+                                        <h:outputText value="#{user.email}" />
+                                    </p:column>
+                                     <p:column headerText="Service">
+                                         <h:outputText value="#{user.service.libelleService}" />
+                                    </p:column>
+                                     <p:column headerText="Blocked">
+                                         <h:form><h:commandButton rendered="#{user.blocked}" value="deblocker"/>
+                                             <h:commandButton rendered="#{!user.blocked}" value="blocker"/></h:form>
+                                    </p:column>
+                                    <p:column headerText="Edit">
+                                        <h:form><h:commandButton  value="edit" action="#" />
+                                             </h:form>
+                                    </p:column>
+                                    <p:column headerText="Delete">
+                                        <h:form><h:commandButton action="#" value="delete"/>
+                                             </h:form>
+                                    </p:column>
+                                    
+                                </p:dataTable>
+
+
+                            </div>
+                        </div>
+                        <!-- /. ROW  -->
+                        <hr />
+
+                    </div>
+                    <!-- /. PAGE INNER  -->
+                </div>
+            </ui:define>
+
+
+        </ui:composition>
+    </body>
+</html>
+
+

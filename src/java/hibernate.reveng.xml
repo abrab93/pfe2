@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="gestionvehiculepfe"/>
+  <table-filter match-name="panne"/>
+  <table-filter match-name="vignette"/>
+  <table-filter match-name="alerteasurance"/>
+  <table-filter match-name="pneu"/>
+  <table-filter match-name="vidange"/>
+  <table-filter match-name="typevehicule"/>
+  <table-filter match-name="utilisateur"/>
+  <table-filter match-name="vehicule"/>
+  <table-filter match-name="assurance"/>
+  <table-filter match-name="alertevisitetechnique"/>
+  <table-filter match-name="transaction"/>
+  <table-filter match-name="marque"/>
+  <table-filter match-name="visitetechnique"/>
+  <table-filter match-name="service"/>
+  <table-filter match-name="centrevisitetechnique"/>
+  <table-filter match-name="categorie"/>
+  <table-filter match-name="reparation"/>
+  <table-filter match-name="entrepriseassurance"/>
+  <table-filter match-name="alertevidange"/>
+  <table-filter match-name="typecarburant"/>
+  <table-filter match-name="proprietairevehicule"/>
+  <table-filter match-name="alertevignette"/>
+  <table-filter match-name="alertepneu"/>
+</hibernate-reverse-engineering>

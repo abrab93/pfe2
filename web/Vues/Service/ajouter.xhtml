@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Gestion des poles</title>
+</head>
+
+    <body>
+        <!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+        <ui:composition template="/Vues/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Redefinition du contenu du template  -->
+                <div id="page-wrapper" >
+                    <div id="page-inner">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Ajouter Service</h1>
+                                <f:view>
+                                    <h:form>
+                                        <h1><h:outputText value="Create/Edit"/></h1>
+                                        <h:panelGrid columns="2">
+                                            <h:outputLabel value="LibelleService:" for="libelleService" />
+                                            <h:inputText id="libelleService" value="#{serviceControler.service.libelleService}" title="LibelleService" required="true" requiredMessage="The LibelleService field is required."/>
+                                        </h:panelGrid>
+                                        <h:commandButton value="save" action="#{serviceControler.save()}"></h:commandButton>
+                                    </h:form>
+                                </f:view>
+
+
+
+                            </div>
+                        </div>
+                        <!-- /. ROW  -->
+                        <hr />
+
+                    </div>
+                    <!-- /. PAGE INNER  -->
+                </div>
+            </ui:define>
+
+
+        </ui:composition>
+    </body>
+</html>

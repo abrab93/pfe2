@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+">
+
+<!--     <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="Web Pages/WEB-INF/jdbc.properties" />
+
+<bean id="dataSource"
+    class="org.apache.commons.dbcp.BasicDataSource"
+    p:driverClassName="${jdbc.driverClassName}"
+    p:url="${jdbc.url}"
+    p:username="${jdbc.username}"
+    p:password="${jdbc.password}"/>-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"  value="com.mysql.jdbc.Driver" />
+        <property name="url"  value="jdbc:mysql://localhost:3306/gestionvehiculepfe?zeroDateTimeBehavior=convertToNull" />
+        <property name="username"  value="root" />
+        <property name="password"  value="" />
+    </bean>
+
+    <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        
+        <property name="dataSource" >
+            <ref bean="dataSource"/>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.pfe.model.Alerteasurance</value>
+               <value>com.pfe.model.Panne</value>
+               <value>com.pfe.model.Proprietairevehicule</value>
+               <value>com.pfe.model.Visitetechnique</value>
+               <value>com.pfe.model.Service</value>
+               <value>com.pfe.model.Assurance</value>
+               <value>com.pfe.model.Vehicule</value>
+               <value>com.pfe.model.Transaction</value>
+               <value>com.pfe.model.Typevehicule</value>
+               <value>com.pfe.model.Reparation</value>
+               <value>com.pfe.model.Marque</value>
+               <value>com.pfe.model.Categorie</value>
+               <value>com.pfe.model.Typecarburant</value>
+               <value>com.pfe.model.Pneu</value>
+               <value>com.pfe.model.Vignette</value>
+               <value>com.pfe.model.Utilisateur</value>
+               <value>com.pfe.model.Alertepneu</value>
+               <value>com.pfe.model.Entrepriseassurance</value>
+               <value>com.pfe.model.Alertevignette</value>
+               <value>com.pfe.model.Centrevisitetechnique</value>
+               <value>com.pfe.model.Alertevidange</value>
+               <value>com.pfe.model.Vidange</value>
+               <value>com.pfe.model.Alertevisitetechnique</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.pool_size">1</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+            </props>
+        </property>
+
+
+    </bean>
+    
+    
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory">
+	</property>
+</bean>
+<tx:annotation-driven transaction-manager="transactionManager"/>
+
+<!--    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com.gb.model"></context:component-scan>
+    <context:component-scan base-package="com.gb.service"></context:component-scan>
+    <context:component-scan base-package="com.gb.controler"></context:component-scan>-->
+    
+    <context:component-scan base-package="com.pfe"></context:component-scan>
+    
+</beans>

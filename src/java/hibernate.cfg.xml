@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gestionvehiculepfe?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.pool_size">1</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping class="com.pfe.model.Alerteasurance"/>
+    <mapping class="com.pfe.model.Panne"/>
+    <mapping class="com.pfe.model.Proprietairevehicule"/>
+    <mapping class="com.pfe.model.Visitetechnique"/>
+    <mapping class="com.pfe.model.Service"/>
+    <mapping class="com.pfe.model.Assurance"/>
+    <mapping class="com.pfe.model.Vehicule"/>
+    <mapping class="com.pfe.model.Transaction"/>
+    <mapping class="com.pfe.model.Typevehicule"/>
+    <mapping class="com.pfe.model.Reparation"/>
+    <mapping class="com.pfe.model.Marque"/>
+    <mapping class="com.pfe.model.Categorie"/>
+    <mapping class="com.pfe.model.Typecarburant"/>
+    <mapping class="com.pfe.model.Pneu"/>
+    <mapping class="com.pfe.model.Vignette"/>
+    <mapping class="com.pfe.model.Utilisateur"/>
+    <mapping class="com.pfe.model.Alertepneu"/>
+    <mapping class="com.pfe.model.Entrepriseassurance"/>
+    <mapping class="com.pfe.model.Alertevignette"/>
+    <mapping class="com.pfe.model.Centrevisitetechnique"/>
+    <mapping class="com.pfe.model.Alertevidange"/>
+    <mapping class="com.pfe.model.Vidange"/>
+    <mapping class="com.pfe.model.Alertevisitetechnique"/>
+  </session-factory>
+</hibernate-configuration>
