@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author abdelmouhgit
  */
+
 @Transactional
 @Service("utilisateurService")
 public class UtilisateurServiceImpl implements UtilisateurService{
@@ -54,14 +55,37 @@ public class UtilisateurServiceImpl implements UtilisateurService{
         sessionFactory.getCurrentSession().saveOrUpdate(user);
     }
 
+//    @Override
+//    public void changerEtat(Utilisateur user) {
+//  
+//        if(user.isBlocked()){
+//            System.out.println("5oona mebloocker");
+//            user.setBlocked(false);
+//        }
+//        if(!user.isBlocked()){
+//            System.out.println("5oona mamebbloocker");
+//            user.setBlocked(true);
+//           
+//        }
+//  
+//    }
     @Override
-    public void changerEtat(Utilisateur user) {
-        if(user.isBlocked()){
-            user.setBlocked(false);
-        }
-        if(!user.isBlocked()){
-            user.setBlocked(true);
-        }
+    public void deblocker(Utilisateur user){
+        user.setBlocked(false);
     }
-    
+    @Override
+    public void blocker(Utilisateur user){
+        user.setBlocked(true);
+    }
+
+    @Override
+    public List<Integer> generateIDuser() {
+        return sessionFactory.getCurrentSession().createQuery("select max(idUtilisateur) from Utilisateur").list();
+    }
+
+    @Override
+    public void delete(Utilisateur user) {
+        sessionFactory.getCurrentSession().delete(user);
+    }
+
 }

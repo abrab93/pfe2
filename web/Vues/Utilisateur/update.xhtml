@@ -32,7 +32,7 @@
                                                         <p:outputLabel value="NomUtilisateur:" for="nomUtilisateur" />
                                                         <p:inputText id="nomUtilisateur" value="#{utilisateurControler.user.nomUtilisateur}" title="NomUtilisateur" required="true" requiredMessage="The NomUtilisateur field is required."/>
                                                         <p:outputLabel value="PassWord:" for="passWord" />
-                                                        <p:password id="passWord" value="#{utilisateurControler.user.passWord}" required="true" requiredMessage="The PassWord field is required."/>
+                                                        <p:inputText id="passWord" value="#{utilisateurControler.user.passWord}" required="true" requiredMessage="The PassWord field is required."/>
                                                         <p:outputLabel value="Email:" for="email" />
                                                         <p:inputText id="email" value="#{utilisateurControler.user.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
                                                         <p:outputLabel value="NomPrenom:" for="nomPrenom" />
@@ -43,13 +43,12 @@
                                                                         <f:selectItems value="#{serviceControler.services}" var="item" itemLabel="#{item.libelleService}" itemValue="#{item.idService}" />
                                                         </h:selectOneMenu>
 
-                                                         
-                                                        <p:commandButton value="Ajouter" action="#{utilisateurControler.save()}"></p:commandButton>
+                                                        
+                                                        <p:commandButton value="Update" action="#{utilisateurControler.saveChange()}"></p:commandButton>
+                                                        
                                                         </p:panelGrid>
                                                 </p:panel>
                                             </p:tab>
-                                    </h:form>
-                                    <h:form><h:commandLink value="new Service ..."  action="#{utilisateurControler.creatNewService()}"/> 
                                     </h:form>
                                 </f:view>
 

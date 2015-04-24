@@ -18,5 +18,9 @@ public interface UtilisateurService {
     public Utilisateur findById(int id);
     public List<Utilisateur> findAll();
     public void update(Utilisateur user);
-    public void changerEtat(Utilisateur user);    
+   // public void changerEtat(Utilisateur user);   
+    public List<Integer> generateIDuser();
+    public void blocker(Utilisateur user);
+    public void deblocker(Utilisateur user);
+    public void delete(Utilisateur user);
 }

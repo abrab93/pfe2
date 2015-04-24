@@ -17,4 +17,5 @@ public interface ServiceService {
     public void save(Service service);
     public Service find(int id);
     public List<Service> findAll();
+    public List<Integer> generateIdServ();
 }

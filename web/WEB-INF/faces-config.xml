@@ -9,29 +9,97 @@
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
     
+    <navigation-rule>
+        <from-view-id>/Vues/Utilisateur/ajouter.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>add</from-outcome>
+            <to-view-id>/Vues/Utilisateur/List.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+         
+                
+        <!--	<from-view-id>/Vues/Client/add.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>done</from-outcome>
+           or  <from-action>#{clientControler.save()}</from-action>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>-->
+                
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/Vues/Service/ajouter.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>serviceAdded</from-outcome>
+            <to-view-id>/Vues/Utilisateur/ajouter.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/Vues/Utilisateur/ajouter.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{utilisateurControler.creatNewService()}</from-action>
+            <to-view-id>/Vues/Service/ajouter.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/Vues/Utilisateur/List.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>list</from-outcome>
+            <to-view-id>/Vues/Utilisateur/List.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+         <from-view-id>/Vues/Utilisateur/List.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>list1</from-outcome>
+            <to-view-id>/Vues/Utilisateur/List.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/Vues/Utilisateur/List.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>update</from-outcome>
+            <to-view-id>/Vues/Utilisateur/update.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
 <!--    <navigation-rule>
-		<display-name>Vues/Poles/index.xhtml</display-name>
-		<from-view-id>/Vues/Poles/index.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>ajouter_pole</from-outcome>
-			<to-view-id>/Vues/Poles/add.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<display-name>Vues/Poles/add.xhtml</display-name>
-		<from-view-id>/Vues/Poles/add.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>list</from-outcome>
-			<to-view-id>/Vues/Poles/index.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<display-name>Vues/Poles/index2.xhtml</display-name>
-		<from-view-id>/Vues/Poles/index2.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>ajouter_test</from-outcome>
-			<to-view-id>/Vues/Poles/add.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>-->
+        <from-view-id>/Vues/Utilisateur/update.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{utilisateurControler.saveChange()}</from-action>
+            <to-view-id>/Vues/Utilisateur/List.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>-->
+        
+    <navigation-rule>   
+        <from-view-id>/Vues/Utilisateur/List.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>delete</from-outcome>
+            <to-view-id>/Vues/Utilisateur/List.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+        
+       
+        
+        
+        
+       
+        
+        
+
     
 </faces-config>

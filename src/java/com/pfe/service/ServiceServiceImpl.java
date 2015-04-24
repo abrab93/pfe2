@@ -40,5 +40,10 @@ public class ServiceServiceImpl implements ServiceService{
     public List<Service> findAll() {
         return sessionFactory.getCurrentSession().createQuery("From Service").list();
     }
+
+    @Override
+    public List<Integer> generateIdServ() {
+        return sessionFactory.getCurrentSession().createQuery("select max(idService) from Service").list();
+    }
     
 }

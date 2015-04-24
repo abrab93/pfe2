@@ -24,15 +24,23 @@
 
                                 <h1>List des utilisateurs </h1>
                                 
-                                <p:dataTable id="users" var="user" value="#{utilisateurControler.users}" rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                                    
+                                  <h:form>
+                                        <h:commandLink>
+                                            <p:graphicImage library="images" name="pdf.png" />
+                                            <p:dataExporter type="pdf" target="users" fileName="users" pageOnly="true" />
+                                        </h:commandLink>
+                                        <h:commandLink>
+                                            <p:graphicImage library="images" name="excel.png" />
+                                            <p:dataExporter type="xls" target="users" fileName="users" pageOnly="true" />
+                                        </h:commandLink>
+                                </h:form> 
+                                
+                                <p:dataTable id="users" var="user" value="#{utilisateurControler.users}"  scrollable="true" scrollHeight="450">                                  
+                                   
                                     <p:column headerText="Id">
                                         <h:outputText value="#{user.idUtilisateur}" />
                                     </p:column>
-
+                                    
                                     <p:column headerText="Nom Utilisateur">
                                         <h:outputText value="#{user.nomUtilisateur}" />
                                     </p:column>
@@ -51,21 +59,23 @@
                                          <h:outputText value="#{user.service.libelleService}" />
                                     </p:column>
                                      <p:column headerText="Blocked">
-                                         <h:form><h:commandButton rendered="#{user.blocked}" value="deblocker"/>
-                                             <h:commandButton rendered="#{!user.blocked}" value="blocker"/></h:form>
+                                         <h:form>
+                                             <p:commandButton rendered="#{user.blocked}" value="deblocker" action="#{utilisateurControler.updateEtatDeblo(user)}"/>
+                                             <p:commandButton rendered="#{!user.blocked}" value="blocker" action="#{utilisateurControler.updateEtatBlo(user)}"/>
+                                         </h:form>
                                     </p:column>
                                     <p:column headerText="Edit">
-                                        <h:form><h:commandButton  value="edit" action="#" />
+                                        <h:form><p:commandButton  value="edit" action="#{utilisateurControler.update(user)}" />
                                              </h:form>
                                     </p:column>
                                     <p:column headerText="Delete">
-                                        <h:form><h:commandButton action="#" value="delete"/>
+                                        <h:form><p:commandButton  value="delete" action="#{utilisateurControler.delete(user)}"/>
                                              </h:form>
                                     </p:column>
                                     
                                 </p:dataTable>
-
-
+                                
+                              
                             </div>
                         </div>
                         <!-- /. ROW  -->

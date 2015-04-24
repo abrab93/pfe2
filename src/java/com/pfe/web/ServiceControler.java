@@ -29,9 +29,18 @@ public class ServiceControler {
     @Autowired
     private ServiceService serviceService;
     
+    public Service cloneService(){
+    Service clonedService=new Service();
+    clonedService.setIdService(serviceService.generateIdServ().get(0));
+        System.out.println("********id dial Service jdiid"+serviceService.generateIdServ().get(0));
+    clonedService.setLibelleService(service.getLibelleService());
+    return clonedService;
+    }
+    
     public String save(){
     serviceService.save(service);
-    return null;
+    services.add(cloneService());
+    return "serviceAdded";
     }
     
     @PostConstruct

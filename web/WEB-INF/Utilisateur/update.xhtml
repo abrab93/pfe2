@@ -43,13 +43,11 @@
                                                                         <f:selectItems value="#{serviceControler.services}" var="item" itemLabel="#{item.libelleService}" itemValue="#{item.idService}" />
                                                         </h:selectOneMenu>
 
-                                                         
+
                                                         <p:commandButton value="Ajouter" action="#{utilisateurControler.save()}"></p:commandButton>
                                                         </p:panelGrid>
                                                 </p:panel>
                                             </p:tab>
-                                    </h:form>
-                                    <h:form><h:commandLink value="new Service ..."  action="#{utilisateurControler.creatNewService()}"/> 
                                     </h:form>
                                 </f:view>
 

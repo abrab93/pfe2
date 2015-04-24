@@ -139,6 +139,33 @@ public class Utilisateur  implements java.io.Serializable {
         this.transactions = transactions;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + (this.idUtilisateur != null ? this.idUtilisateur.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Utilisateur other = (Utilisateur) obj;
+        if (this.idUtilisateur != other.idUtilisateur && (this.idUtilisateur == null || !this.idUtilisateur.equals(other.idUtilisateur))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur + ", passWord=" + passWord + ", email=" + email + ", nomPrenom=" + nomPrenom + ", blocked=" + blocked + '}';
+    }
+
 
 
 
