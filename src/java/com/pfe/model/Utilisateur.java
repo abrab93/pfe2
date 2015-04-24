@@ -32,6 +32,7 @@ public class Utilisateur  implements java.io.Serializable {
      private String nomUtilisateur;
      private String passWord;
      private String email;
+     private String role;
      private String nomPrenom;
      private boolean blocked;
      private Set<Transaction> transactions = new HashSet<Transaction>(0);
@@ -40,19 +41,21 @@ public class Utilisateur  implements java.io.Serializable {
     }
 
 	
-    public Utilisateur(Service service, String nomUtilisateur, String passWord, String email, String nomPrenom, boolean blocked) {
+    public Utilisateur(Service service, String nomUtilisateur, String passWord, String email, String role, String nomPrenom, boolean blocked) {
         this.service = service;
         this.nomUtilisateur = nomUtilisateur;
         this.passWord = passWord;
         this.email = email;
+        this.role = role;
         this.nomPrenom = nomPrenom;
         this.blocked = blocked;
     }
-    public Utilisateur(Service service, String nomUtilisateur, String passWord, String email, String nomPrenom, boolean blocked, Set<Transaction> transactions) {
+    public Utilisateur(Service service, String nomUtilisateur, String passWord, String email, String role, String nomPrenom, boolean blocked, Set<Transaction> transactions) {
        this.service = service;
        this.nomUtilisateur = nomUtilisateur;
        this.passWord = passWord;
        this.email = email;
+       this.role = role;
        this.nomPrenom = nomPrenom;
        this.blocked = blocked;
        this.transactions = transactions;
@@ -110,6 +113,14 @@ public class Utilisateur  implements java.io.Serializable {
         this.email = email;
     }
 
+    @Column(name="role", nullable=false, length=20)
+    public String getRole() {
+        return this.email;
+    }
+    
+    public void setRole(String email) {
+        this.email = email;
+    }
     
     @Column(name="nomPrenom", nullable=false, length=20)
     public String getNomPrenom() {
@@ -163,9 +174,10 @@ public class Utilisateur  implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur + ", passWord=" + passWord + ", email=" + email + ", nomPrenom=" + nomPrenom + ", blocked=" + blocked + '}';
+        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur + ", passWord=" + passWord + ", email=" + email + ", role=" + role + ", nomPrenom=" + nomPrenom + ", blocked=" + blocked + '}';
     }
 
+    
 
 
 
