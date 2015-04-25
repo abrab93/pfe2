@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Gestion des poles</title>
-</head>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Gestion des poles</title>
+    </head>
 
     <body>
         <!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
@@ -22,63 +22,100 @@
                             <div class="col-md-12">
 
 
-                                <h1>List des utilisateurs </h1>
-                                
-                                  <h:form>
-                                        <h:commandLink>
-                                            <p:graphicImage library="images" name="pdf.png" />
-                                            <p:dataExporter type="pdf" target="users" fileName="users" pageOnly="true" />
-                                        </h:commandLink>
-                                        <h:commandLink>
-                                            <p:graphicImage library="images" name="excel.png" />
-                                            <p:dataExporter type="xls" target="users" fileName="users" pageOnly="true" />
-                                        </h:commandLink>
-                                </h:form> 
-                                
-                                <p:dataTable id="users" var="user" value="#{utilisateurControler.users}"  scrollable="true" scrollHeight="450">                                  
-                                   
-                                    <p:column headerText="Id">
-                                        <h:outputText value="#{user.idUtilisateur}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Nom Utilisateur">
-                                        <h:outputText value="#{user.nomUtilisateur}" />
-                                    </p:column>
+                                <h1>List des utilisateurs</h1> 
 
-                                    <p:column headerText="Nom et Prenom">
-                                        <h:outputText value="#{user.nomPrenom}" />
-                                    </p:column>
+                                <h:form id="form">
 
-                                    <p:column headerText="Password">
-                                        <h:outputText value="#{user.passWord}" />
-                                    </p:column>
-                                    <p:column headerText="Email">
-                                        <h:outputText value="#{user.email}" />
-                                    </p:column>
-                                    <p:column headerText="Role">
-                                        <h:outputText value="#{user.role}" />
-                                    </p:column>
-                                     <p:column headerText="Service">
-                                         <h:outputText value="#{user.service.libelleService}" />
-                                    </p:column>
-                                     <p:column headerText="Blocked">
-                                         <h:form>
-                                             <p:commandButton rendered="#{user.blocked}" value="deblocker" action="#{utilisateurControler.updateEtatDeblo(user)}"/>
-                                             <p:commandButton rendered="#{!user.blocked}" value="blocker" action="#{utilisateurControler.updateEtatBlo(user)}"/>
-                                         </h:form>
-                                    </p:column>
-                                    <p:column headerText="Edit">
-                                        <h:form><p:commandButton  value="edit" action="#{utilisateurControler.update(user)}" />
-                                             </h:form>
-                                    </p:column>
-                                    <p:column headerText="Delete">
-                                        <h:form><p:commandButton  value="delete" action="#{utilisateurControler.delete(user)}"/>
-                                             </h:form>
-                                    </p:column>
-                                    
-                                </p:dataTable>
-                                
-                              
+                                    <p:contextMenu for="tbl">
+                                        <p:menuitem value="View" update="userDetail" icon="ui-icon-search" oncomplete="PF('userDialog').show()"/>
+                                        <p:menuitem value="Delete" update="tbl" icon="ui-icon-close" actionListener="#{utilisateurControler.deleteUser}"/>
+                                    </p:contextMenu>
+
+
+
+                                    <p:dataTable id="tbl" var="user" value="#{utilisateurControler.users}"  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters} {header}"
+                                                 paginator="true" rowsPerPageTemplate="5,10,15,20,30,50" rows="5" style="margin-bottom:20px" resizableColumns="true"  draggableRows="true" rowKey="#{user.idUtilisateur}"  selection="#{utilisateurControler.user}" selectionMode="single" >                                  
+
+                                        <f:facet name="{header}">
+
+                                            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator"/>
+                                                                                <p:columnToggler datasource="tbl" trigger="toggler" />
+                                        </f:facet>
+                                        <f:facet name="{Exporters}">
+                                            <h:commandLink>
+                                                <p:graphicImage library="images" name="pdf.png" />
+                                                <p:dataExporter type="pdf" target="tbl" fileName="users" preProcessor="#{utilisateurControler.preProcessPDF}"/>
+                                            </h:commandLink>
+                                            <h:commandLink>
+                                                <p:graphicImage library="images" name="excel.png" />
+                                                <p:dataExporter type="xls" target="tbl" fileName="users" postProcessor="#{utilisateurControler.postProcessXLS}" />
+                                            </h:commandLink>
+                                        </f:facet>
+
+                                        <p:column headerText="Id">
+                                            <h:outputText value="#{user.idUtilisateur}" />
+                                        </p:column>
+
+                                        <p:column headerText="Nom Utilisateur">
+                                            <h:outputText value="#{user.nomUtilisateur}" />
+                                        </p:column>
+
+                                        <p:column headerText="Nom et Prenom">
+                                            <h:outputText value="#{user.nomPrenom}" />
+                                        </p:column>
+
+                                        <p:column headerText="Password">
+                                            <h:outputText value="#{user.passWord}" />
+                                        </p:column>
+                                        <p:column headerText="Email">
+                                            <h:outputText value="#{user.email}" />
+                                        </p:column>
+                                        <p:column headerText="Role">
+                                            <h:outputText value="#{user.role}" />
+                                        </p:column>
+                                        <p:column headerText="Service">
+                                            <h:outputText value="#{user.service.libelleService}" />
+                                        </p:column>
+                                        <p:column headerText="Blocked" exportable="false">
+
+                                            <p:commandButton rendered="#{user.blocked}" value="deblocker" action="#{utilisateurControler.updateEtatDeblo(user)}"/>
+                                            <p:commandButton rendered="#{!user.blocked}" value="blocker" action="#{utilisateurControler.updateEtatBlo(user)}"/>
+
+                                        </p:column>
+                                        <p:column headerText="Edit" exportable="false">
+                                            <p:commandButton  value="edit" action="#{utilisateurControler.update(user)}" />
+
+                                        </p:column>
+                                        <p:column headerText="Delete" exportable="false">
+                                            <p:commandButton  value="delete" action="#{utilisateurControler.delete(user)}"/>
+
+                                        </p:column>
+
+                                    </p:dataTable>
+
+                                    <p:dialog header="User Info" widgetVar="userDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                                        <p:outputPanel id="userDetail" style="text-align:center;">
+                                            <p:panelGrid  columns="2" rendered="#{not empty utilisateurControler.user}" columnClasses="value">
+                                                <f:facet name="header">
+                                                    <p:graphicImage library="images" name="pdf.png"/> 
+                                                </f:facet>
+
+                                                <h:outputText value="Id:" />
+                                                <h:outputText value="#{utilisateurControler.user.idUtilisateur}" />
+
+                                                <h:outputText value="Blocked:" />
+                                                <h:outputText value="#{utilisateurControler.user.blocked}" />
+
+                                                <h:outputText value="NomPrenom" />
+                                                <h:outputText value="#{utilisateurControler.user.nomPrenom}" style="color:#{dtContextMenuView.selectedCar.color}"/>
+
+                                                <h:outputText value="Role:" />
+                                                <h:outputText value="#{utilisateurControler.user.role}" />
+                                            </p:panelGrid>
+                                        </p:outputPanel>
+                                    </p:dialog>
+
+                                </h:form>
                             </div>
                         </div>
                         <!-- /. ROW  -->

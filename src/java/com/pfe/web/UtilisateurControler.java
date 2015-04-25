@@ -13,12 +13,25 @@ import javax.faces.bean.SessionScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.PageSize;
+import java.io.File;
+import java.io.IOException;
+
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import org.primefaces.event.CellEditEvent;
-import org.primefaces.event.RowEditEvent;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
 /**
  *
  * @author abdelmouhgit
@@ -114,14 +127,14 @@ public class UtilisateurControler {
     return "update";
     }
     
-    public String saveChange(){
+    public void saveChange(){
         System.out.println("***********in");
         utilisateurService.update(user);
         System.out.println("*********serivecc"+user.getService().getLibelleService());
         user.setService(serviceService.find(user.getService().getIdService()));
         users.set(indexUser, user);
         user=new Utilisateur();
-        return "/Vues/Utilisateur/List.xhtml";
+        //return null;
     }
     
     public String creatNewService(){
@@ -176,5 +189,35 @@ public class UtilisateurControler {
     }
     
     
+    public void postProcessXLS(Object document) {
+        HSSFWorkbook wb = (HSSFWorkbook) document;
+        HSSFSheet sheet = wb.getSheetAt(0);
+        HSSFRow header = sheet.getRow(0);
+         
+        HSSFCellStyle cellStyle = wb.createCellStyle();  
+        cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
+        cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+         
+        for(int i=0; i < header.getPhysicalNumberOfCells();i++) {
+            HSSFCell cell = header.getCell(i);
+             
+            cell.setCellStyle(cellStyle);
+        }
+    }
     
+        public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+        Document pdf = (Document) document;
+        pdf.open();
+        pdf.setPageSize(PageSize.A4);
+ 
+        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String logo = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "images" + File.separator + "pdfs.png";
+         
+        pdf.add(Image.getInstance(logo));
+    }
+        
+        public void deleteUser() {
+        users.remove(user);
+        user = null;
+    }
 }

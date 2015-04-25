@@ -34,7 +34,10 @@
             <script src=" #{request.contextPath}/template/js/jquery.metisMenu.js"></script>
             <!-- CUSTOM SCRIPTS -->
             <script src=" #{request.contextPath}/template/js/custom.js"></script>
-
+            <!-- pour resoudre le conflit entre le jq de primeFaces et le jq importer apartir de la template -->
+            <script type="text/javascript">
+            jQuery.noConflict();
+            </script>
         </ui:insert>
 	 
 	</h:head>  
