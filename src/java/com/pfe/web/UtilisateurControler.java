@@ -127,14 +127,14 @@ public class UtilisateurControler {
     return "update";
     }
     
-    public void saveChange(){
+    public String saveChange(){
         System.out.println("***********in");
         utilisateurService.update(user);
         System.out.println("*********serivecc"+user.getService().getLibelleService());
         user.setService(serviceService.find(user.getService().getIdService()));
         users.set(indexUser, user);
         user=new Utilisateur();
-        //return null;
+        return "/Vues/Utilisateur/List.xhtml";
     }
     
     public String creatNewService(){
