@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/Vues/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Redefinition du contenu du template  -->
+                <div id="page-wrapper" >
+                    <div id="page-inner">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>search for a user</h1>
+
+                                <f:view>
+
+                                    <h:form prependId="false">
+                                        <h:outputText value="Type JavaBeat :"/>
+                                        <p:autoComplete value="#{utilisateurControler.message}" completeMethod="#{utilisateurControler.complete}"></p:autoComplete>
+                                    </h:form>
+                                    
+                                </f:view>
+
+                                
+                                <f:view>
+                                    <h:form prependId="false">
+                                        <h1>JavaBeat Primefaces Example</h1>
+                                        <h2>Primefaces - AutoComplete + completeMethod + Pojo</h2>
+                                        <h:outputText value="Enter name of the user you wish to see statistics for :"/>
+                                       
+
+                                        <p:autoComplete value="#{utilisateurControler.user.nomPrenom}"
+                                                        completeMethod="#{utilisateurControler.complete1}"
+                                                        var="usr"
+                                                        itemValue="#{usr.nomUtilisateur}"
+                                                        itemLabel="#{usr.nomPrenom}"
+                                                        forceSelection="true" converter="utilisateurConverter">
+                                            <p:column>
+                                                #{usr.nomPrenom}
+                                            </p:column>
+                                            <p:column>
+                                                #{usr.idUtilisateur}
+                                            </p:column>
+                                        </p:autoComplete>
+                                                        
+                                                                           </h:form>
+                                    
+                                    <p:panelGrid id="output">
+                                    
+                                    <h:outputText value="id:#{utilisateurControler.user.idUtilisateur}"/>
+                                    </p:panelGrid>
+                                </f:view>
+
+                                
+                            </div>
+                        </div>
+                        <!-- /. ROW  -->
+                        <hr />
+
+                    </div>
+                    <!-- /. PAGE INNER  -->
+                </div>
+            </ui:define>
+
+
+        </ui:composition>
+        
+    </h:body>
+</html>
+
