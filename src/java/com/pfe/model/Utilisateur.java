@@ -32,7 +32,7 @@ public class Utilisateur  implements java.io.Serializable {
      private String nomUtilisateur;
      private String passWord;
      private String email;
-     private String role;
+     private String rrole;
      private String nomPrenom;
      private boolean blocked;
      private Set<Transaction> transactions = new HashSet<Transaction>(0);
@@ -46,7 +46,7 @@ public class Utilisateur  implements java.io.Serializable {
         this.nomUtilisateur = nomUtilisateur;
         this.passWord = passWord;
         this.email = email;
-        this.role = role;
+        this.rrole = role;
         this.nomPrenom = nomPrenom;
         this.blocked = blocked;
     }
@@ -55,7 +55,7 @@ public class Utilisateur  implements java.io.Serializable {
        this.nomUtilisateur = nomUtilisateur;
        this.passWord = passWord;
        this.email = email;
-       this.role = role;
+       this.rrole = role;
        this.nomPrenom = nomPrenom;
        this.blocked = blocked;
        this.transactions = transactions;
@@ -113,13 +113,13 @@ public class Utilisateur  implements java.io.Serializable {
         this.email = email;
     }
 
-    @Column(name="role", nullable=false, length=20)
-    public String getRole() {
-        return this.email;
+     @Column(name="rrole", nullable=false, length=20)
+    public String getRrole() {
+        return this.rrole;
     }
     
-    public void setRole(String email) {
-        this.email = email;
+    public void setRrole(String rrole) {
+        this.rrole = rrole;
     }
     
     @Column(name="nomPrenom", nullable=false, length=20)
@@ -152,8 +152,8 @@ public class Utilisateur  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + (this.idUtilisateur != null ? this.idUtilisateur.hashCode() : 0);
+        int hash = 3;
+        hash = 79 * hash + (this.idUtilisateur != null ? this.idUtilisateur.hashCode() : 0);
         return hash;
     }
 
@@ -174,8 +174,9 @@ public class Utilisateur  implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur + ", passWord=" + passWord + ", email=" + email + ", role=" + role + ", nomPrenom=" + nomPrenom + ", blocked=" + blocked + '}';
+        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur + ", passWord=" + passWord + ", email=" + email + ", rrole=" + rrole + ", nomPrenom=" + nomPrenom + ", blocked=" + blocked + '}';
     }
+
 
     
 
