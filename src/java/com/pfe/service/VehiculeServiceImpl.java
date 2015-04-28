@@ -6,8 +6,8 @@
 package com.pfe.service;
 
 import com.pfe.facade.VehiculeService;
-import com.pfe.model.Utilisateur;
 import com.pfe.model.Vehicule;
+
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

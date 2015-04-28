@@ -6,8 +6,8 @@
 package com.pfe.service;
 
 import com.pfe.facade.ServiceService;
-import com.pfe.facade.UtilisateurService;
 import com.pfe.model.Utilisateur;
+import com.pfe.facade.UtilisateurService;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
