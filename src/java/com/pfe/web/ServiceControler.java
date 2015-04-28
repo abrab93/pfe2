@@ -7,10 +7,10 @@ package com.pfe.web;
 
 import com.pfe.facade.ServiceService;
 import com.pfe.model.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

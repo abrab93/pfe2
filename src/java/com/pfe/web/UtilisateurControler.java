@@ -18,6 +18,8 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
+import com.pfe.model.Service;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -26,12 +28,14 @@ import javax.servlet.ServletContext;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.primefaces.event.RowEditEvent;
 /**
  *
  * @author abdelmouhgit
@@ -42,16 +46,20 @@ import org.apache.poi.hssf.util.HSSFColor;
 public class UtilisateurControler {
 
     private Utilisateur user=new Utilisateur();
-    private List<Utilisateur>users=new ArrayList<Utilisateur>();
+    public static List<Utilisateur>users=new ArrayList<Utilisateur>();
     @Autowired
     private UtilisateurService utilisateurService;
     @Autowired
      private ServiceService serviceService;
     
+    public String refrech(){
+        return null;
+    }
     public Utilisateur clonedUser(){
         Utilisateur cloneUser=new Utilisateur();
         cloneUser.setBlocked(user.isBlocked());
         cloneUser.setEmail(user.getEmail());
+        cloneUser.setRrole(user.getRrole());
         cloneUser.setNomPrenom(user.getNomPrenom());
         cloneUser.setPassWord(user.getPassWord());
         cloneUser.setService(user.getService());
@@ -89,7 +97,7 @@ public class UtilisateurControler {
          System.out.println("***********User apres l etat :"+userEtat);
          utilisateurService.update(userEtat);
          users.set(index, userEtat);
-      
+      user=new Utilisateur();
         return "list";
     }
      public String updateEtatBlo(Utilisateur userEtat){
@@ -99,6 +107,7 @@ public class UtilisateurControler {
          System.out.println("***********User apres l etat :"+userEtat);
          utilisateurService.update(userEtat);
          users.set(index, userEtat);
+         user=new Utilisateur();
       
         return "list";
     }
@@ -138,6 +147,7 @@ public class UtilisateurControler {
     }
     
     public String creatNewService(){
+        System.out.println("********user"+user);
     return "service";
     }
 //    //************************
@@ -217,7 +227,87 @@ public class UtilisateurControler {
     }
         
         public void deleteUser() {
-        users.remove(user);
-        user = null;
+           utilisateurService.delete(user);
+           users.remove(user);
+           user = new Utilisateur();
     }
+        
+    private String message;
+
+    public List<String> complete(String query) {
+        List<String> queries = new ArrayList<String>();
+        for (int i = 0; i < 15; i++) {
+            queries.add(query + i);
+        }
+        return queries;
+    }
+    
+    public List<Utilisateur> complete1(String query) {
+        
+        return searchByName(query);
+    }
+    
+    public List<Utilisateur>searchByName(String name){
+    List<Utilisateur>searchs=new ArrayList<Utilisateur>();
+   
+    for(Utilisateur u:this.users){
+        if(u.getNomPrenom().startsWith(name)){
+          searchs.add(u);
+        }
+      }
+      return searchs;
+    }
+    
+    
+    
+    
+    
+    //***************rowEdit********************************
+       public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("user Edited", ((Utilisateur) event.getObject()).getIdUtilisateur()+"");
+        Service service= serviceService.findByLib(user.getService().getLibelleService()).get(0);
+        user.setService(service);
+        utilisateurService.update(user);
+        user=new Utilisateur();
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Utilisateur) event.getObject()).getIdUtilisateur()+"");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    
+    
+    
+    //**************************************
+
+    public ServiceService getServiceService() {
+        return serviceService;
+    }
+
+    public void setServiceService(ServiceService serviceService) {
+        this.serviceService = serviceService;
+    }
+
+    public int getIndexUser() {
+        return indexUser;
+    }
+
+    public void setIndexUser(int indexUser) {
+        this.indexUser = indexUser;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+
+
+        
 }

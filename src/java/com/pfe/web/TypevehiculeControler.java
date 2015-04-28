@@ -7,6 +7,7 @@ package com.pfe.web;
 
 import com.pfe.facade.TypevehiculeService;
 import com.pfe.model.Typevehicule;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
