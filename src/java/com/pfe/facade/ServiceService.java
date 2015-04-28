@@ -5,6 +5,7 @@
  */
 package com.pfe.facade;
 
+
 import com.pfe.model.Service;
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface ServiceService {
     public Service find(int id);
     public List<Service> findAll();
     public List<Integer> generateIdServ();
+    public List<Service> findByLib(String lib);
 }
