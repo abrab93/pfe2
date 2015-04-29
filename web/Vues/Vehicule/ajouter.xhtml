@@ -5,101 +5,174 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-      
+
     <h:head>
         <title>Facelet Title</title>
-      
+
     </h:head>
     <h:body>
         <ui:composition template="/Vues/layout.xhtml">
 
             <ui:define name="content">
-                 Redefinition du contenu du template  
+                Redefinition du contenu du template  
                 <div id="page-wrapper" >
                     <div id="page-inner">
                         <div class="row">
                             <div class="col-md-12">
                                 <h1>Ajouter Vehicule</h1>
-
+                                   
+                               <!-- *************** popup pour l ajout d un typeCarburant ************ -->
+                                <p:dialog header="new TypeCarburant" widgetVar="dlgTc" modal="true" showEffect="explode" hideEffect="bounce" resizable="false">
+                                    <h:form>
+                                        <h1><h:outputText value="Ajouter"/></h1>
+                                        <h:panelGrid columns="2">
+                                            <h:outputLabel value="LibelleTypeCarburant" for="libelleTypeCarburant" />
+                                            <h:inputText id="libelleTypeCarburant" value="#{typecarburantControler.typecarburant.libelleTypeCarburant}" title="LibelleTypeCarburant" required="true" requiredMessage="The LibelleTypeCarburant field is required."/>
+                                        </h:panelGrid>
+                                        <p:commandButton value="save" action="#{typecarburantControler.save()}"  oncomplete="PF('dlgTc').hide()" update="idFormV:typecarburant"></p:commandButton>
+                                    </h:form>
+                                </p:dialog>
+                               <!-- ****************************************************** -->
                                 
+                                <!--************ popup pour l ajout d une marque ************** -->
+                                <p:dialog header="new Marque" widgetVar="dlgMarq" modal="true" showEffect="explode" hideEffect="bounce" resizable="false">
+                                    <h:form>
+                                        <h1><h:outputText value="Ajouter"/></h1>
+                                        <h:panelGrid columns="2">
+                                            <h:outputLabel value="LibelleMarque:" for="libelleMarque" />
+                                            <h:inputText id="libelleMarque" value="#{marqueControler.marque.libelleMarque}" title="LibelleMarque" required="true" requiredMessage="The LibelleMarque field is required."/>
+                                        </h:panelGrid>
+                                        <p:commandButton value="save" action="#{marqueControler.save()}"  oncomplete="PF('dlgMarq').hide()" update="idFormV:marque"></p:commandButton>
+                                    </h:form>
+                                </p:dialog>
+                                <!-- ****************************************************** -->
+                                
+                                <!--************ popup pour l ajout d un typeVehicule **************-->
+                                <p:dialog header="new typeVehicule" widgetVar="dlgTv" modal="true" showEffect="explode" hideEffect="bounce" resizable="false">
+                                    <h:form>
+                                        <h1><h:outputText value="Ajouter"/></h1>
+                                        <h:panelGrid columns="2">
+                                            <h:outputLabel value="LibelleService:" for="typevehicule" />
+                                            <p:inputText id="typevehicule" value="#{typevehiculeControler.typevehicule.libelleTypeVehicule}" title="libelleTypeVehicule" required="true" requiredMessage="The libelleTypeVehicule field is required."/>
+                                        </h:panelGrid>
+                                        <p:commandButton value="save" action="#{typevehiculeControler.save()}"  oncomplete="PF('dlgTv').hide()" update="idFormV:typevehicule"></p:commandButton>
+                                    </h:form>
+                                </p:dialog>
+                                <!-- ****************************************************** -->
+                                
+                                <!--************ popup pour l ajout d un prop **************-->
+                                <p:dialog header="new Proprietaire" widgetVar="dlgProp" modal="true" showEffect="explode" hideEffect="bounce" resizable="false">
+                                    <f:view>
+
+
+                                        <h:form>
+                                            <h1><h:outputText value="Ajouter"/></h1>
+                                            <p:panelGrid columns="2">
+                                                
+                                                <h:outputLabel value="Nom:" for="nom" />
+                                                <p:inputText id="nom" value="#{proprietairevehiculeControler.proprietairevehicule.nom}" title="Nom" required="true" requiredMessage="The Nom field is required."/>
+                                                <h:outputLabel value="Prenom:" for="prenom" />
+                                                <p:inputText id="prenom" value="#{proprietairevehiculeControler.proprietairevehicule.prenom}" title="Prenom" required="true" requiredMessage="The Prenom field is required."/>
+                                                <h:outputLabel value="Adresse:" for="adresse" />
+                                                <p:inputText id="adresse" value="#{proprietairevehiculeControler.proprietairevehicule.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required."/>
+                                                <h:outputLabel value="CinRc:" for="cinRc" />
+                                                <p:inputText id="cinRc" value="#{proprietairevehiculeControler.proprietairevehicule.cinRc}" title="CinRc" required="true" requiredMessage="The CinRc field is required."/>
+                                                <p:commandButton value="save" action="#{proprietairevehiculeControler.save()}"  oncomplete="PF('dlgProp').hide()" update="idFormV:proprietairevehicule"></p:commandButton>
+                                            </p:panelGrid>
+                                        </h:form>
+                                    </f:view>
+
+                                </p:dialog>
+                                <!-- ******************************************************** -->
+
                                 <f:view>
 
 
-                                    <h:form>
+                                    <h:form id="idFormV">
                                         <h1><h:outputText value="Create/Edit"/></h1>
-                                        <h:panelGrid columns="2">
-                                            <p:outputLabel value="IdVehicule:" for="idVehicule" />
-                                            <p:inputText id="idVehicule" value="#{vehiculeControler.vehicule.idVehicule}" title="IdVehicule" required="true" requiredMessage="The IdVehicule field is required."/>
-                                            <p:outputLabel value="Marque:" for="marque" />
-                                            <p:selectOneMenu id="marque" value="#{vehiculeControler.vehicule.marque}" required="true" requiredMessage="The Marque field is required.">
-                                                <f:selectItem itemLabel="Select One" itemValue="" />
-                                                <f:selectItems value="#{marqueControler.marques}"/>
-                                            </p:selectOneMenu>
-                                            <p:outputLabel value="Proprietairevehicule:" for="proprietairevehicule" />
-                                            <p:selectOneMenu id="proprietairevehicule" value="#{vehiculeControler.vehicule.proprietairevehicule}" required="true" requiredMessage="The Proprietairevehicule field is required.">
-                                                <f:selectItem itemLabel="Select One" itemValue="" />
-                                                <f:selectItems value="#{proprietairevehiculeControler.proprietairevehicules}"/>
-                                            </p:selectOneMenu>
-                                            <p:outputLabel value="Typecarburant:" for="typecarburant" />
-                                            <p:selectOneMenu id="typecarburant" value="#{vehiculeControler.vehicule.typecarburant}" required="true" requiredMessage="The Typecarburant field is required.">
-                                                <f:selectItem itemLabel="Select One" itemValue="" />
-                                                <f:selectItems value="#{typecarburantControler.typecarburants}"/>
-                                            </p:selectOneMenu>
-                                            <p:outputLabel value="Typevehicule:" for="typevehicule" />
-                                            <p:selectOneMenu id="typevehicule" value="#{vehiculeControler.vehicule.typevehicule}" required="true" requiredMessage="The Typevehicule field is required.">
-                                                <f:selectItem itemLabel="Select One" itemValue="" />
-                                                <f:selectItems value="#{typevehiculeControler.typevehicules}"/>
-                                            </p:selectOneMenu>
-                                            <p:outputLabel value="Immatriculation:" for="immatriculation" />
-                                            <p:inputText id="immatriculation" value="#{vehiculeControler.vehicule.immatriculation}" title="Immatriculation" required="true" requiredMessage="The Immatriculation field is required."/>
-                                            <p:outputLabel value="Date1mc:" for="date1mc" />
+                                        <p:panel header="Ajouter Vehicule">
+                                            <p:panelGrid columns="4">
+                                                
+                                                <p:outputLabel value="Marque:" for="marque" />
+                                                <p:selectOneMenu id="marque" value="#{vehiculeControler.vehicule.marque.idMarque}" required="true" requiredMessage="The Marque field is required.">
+                                                     <f:selectItem itemLabel="Select One" itemValue="" />
+                                                    <f:selectItems value="#{marqueControler.marques}" var="m" itemLabel="#{m.libelleMarque}" itemValue="#{m.idMarque}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="Proprietairevehicule:" for="proprietairevehicule" />
+                                                <p:selectOneMenu id="proprietairevehicule" value="#{vehiculeControler.vehicule.proprietairevehicule.idProprietaire}" required="true" requiredMessage="The Proprietairevehicule field is required.">
+                                                    <f:selectItem itemLabel="Select One" itemValue="" />
+                                                    <f:selectItems value="#{proprietairevehiculeControler.proprietairevehicules}" var="p" itemLabel="#{p.prenom}" itemValue="#{p.idProprietaire}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="Typecarburant:" for="typecarburant" />
+                                                <p:selectOneMenu id="typecarburant" value="#{vehiculeControler.vehicule.typecarburant.idTypeCarburant}" required="true" requiredMessage="The Typecarburant field is required.">
+                                                    <f:selectItem itemLabel="Select One" itemValue="" />
+                                                    <f:selectItems value="#{typecarburantControler.typecarburants}" var="tc" itemLabel="#{tc.libelleTypeCarburant}" itemValue="#{tc.idTypeCarburant}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="Typevehicule:" for="typevehicule" />
+                                                <p:selectOneMenu id="typevehicule" value="#{vehiculeControler.vehicule.typevehicule}" required="true" requiredMessage="The Typevehicule field is required.">
+                                                    <f:selectItem itemLabel="Select One" itemValue="" />
+                                                    <f:selectItems value="#{typevehiculeControler.typevehicules}" var="tv" itemLabel="#{tv.libelleTypeVehicule}" itemValue="#{tv.idTypeVehicule}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="Immatriculation:" for="immatriculation" />
+                                                <p:inputText id="immatriculation" value="#{vehiculeControler.vehicule.immatriculation}" title="Immatriculation" required="true" requiredMessage="The Immatriculation field is required."/>
+                                                <p:outputLabel value="Date1mc:" for="date1mc" />
+                                                <p:calendar id="date1mc" value="#{vehiculeControler.vehicule.date1mc}" title="Date1mc" required="true" requiredMessage="The Date1mc field is required." />
+                                                    
+                                                
+                                                <p:outputLabel value="Date1mcmaroc:" for="date1mcmaroc" />
+                                                <p:calendar id="date1mcmaroc" value="#{vehiculeControler.vehicule.date1mcmaroc}" title="Date1mcmaroc" required="true" requiredMessage="The Date1mcmaroc field is required."/>
+                                                   
+                                                <p:outputLabel value="UsageVehicule:" for="usageVehicule" />
+                                                <p:inputText id="usageVehicule" value="#{vehiculeControler.vehicule.usageVehicule}" title="UsageVehicule" required="true" requiredMessage="The UsageVehicule field is required."/>
+                                                <p:outputLabel value="NumeroChassis:" for="numeroChassis" />
+                                                <p:inputText id="numeroChassis" value="#{vehiculeControler.vehicule.numeroChassis}" title="NumeroChassis" required="true" requiredMessage="The NumeroChassis field is required."/>
+                                                <p:outputLabel value="NombreCylindres:" for="nombreCylindres" />
+                                                <p:inputText id="nombreCylindres" value="#{vehiculeControler.vehicule.nombreCylindres}" title="NombreCylindres" required="true" requiredMessage="The NombreCylindres field is required."/>
+                                                <p:outputLabel value="PuissanceFiscale:" for="puissanceFiscale" />
+                                                <p:inputText id="puissanceFiscale" value="#{vehiculeControler.vehicule.puissanceFiscale}" title="PuissanceFiscale" required="true" requiredMessage="The PuissanceFiscale field is required."/>
+                                                <p:outputLabel value="NombrePlaces:" for="nombrePlaces" />
+                                                <p:inputText id="nombrePlaces" value="#{vehiculeControler.vehicule.nombrePlaces}" title="NombrePlaces" required="true" requiredMessage="The NombrePlaces field is required."/>
+                                                <p:outputLabel value="Ptac:" for="ptac" />
+                                                <p:inputText id="ptac" value="#{vehiculeControler.vehicule.ptac}" title="Ptac" required="true" requiredMessage="The Ptac field is required."/>
+                                                <p:outputLabel value="PoidsVide:" for="poidsVide" />
+                                                <p:inputText id="poidsVide" value="#{vehiculeControler.vehicule.poidsVide}" title="PoidsVide" required="true" requiredMessage="The PoidsVide field is required."/>
+                                                <p:outputLabel value="Ptmct:" for="ptmct" />
+                                                <p:inputText id="ptmct" value="#{vehiculeControler.vehicule.ptmct}" title="Ptmct" required="true" requiredMessage="The Ptmct field is required."/>
+                                                <p:outputLabel value="DureDeVie:" for="dureDeVie" />
+                                                <p:inputText id="dureDeVie" value="#{vehiculeControler.vehicule.dureDeVie}" title="DureDeVie" required="true" requiredMessage="The DureDeVie field is required."/>
+                                                <p:outputLabel value="KilometrageVehicule:" for="kilometrageVehicule" />
+                                                <p:inputText id="kilometrageVehicule" value="#{vehiculeControler.vehicule.kilometrageVehicule}" title="KilometrageVehicule" required="true" requiredMessage="The KilometrageVehicule field is required."/>
+                                                <p:commandButton value="Ajouter" action="#{vehiculeControler.save()}"></p:commandButton>
+                                            </p:panelGrid>
+                                        </p:panel>
+                                        
                                             
-                   <p:calendar id="date1mc" value="#{vehiculeControler.vehicule.date1mc}"  mask="true" />                            
-                                            
-                                            <p:outputLabel value="Date1mcmaroc:" for="date1mcmaroc" />
-                                                                         
-                                            
-                    <p:calendar id="date1mcmaroc" value="#{vehiculeControler.vehicule.date1mcmaroc}" showOn="button" />                        
-                                            
-                                            <p:outputLabel value="UsageVehicule:" for="usageVehicule" />
-                                            <p:inputText id="usageVehicule" value="#{vehiculeControler.vehicule.usageVehicule}" title="UsageVehicule" required="true" requiredMessage="The UsageVehicule field is required."/>
-                                            <p:outputLabel value="NumeroChassis:" for="numeroChassis" />
-                                            <p:inputText id="numeroChassis" value="#{vehiculeControler.vehicule.numeroChassis}" title="NumeroChassis" required="true" requiredMessage="The NumeroChassis field is required."/>
-                                            <p:outputLabel value="NombreCylindres:" for="nombreCylindres" />
-                                            <p:inputText id="nombreCylindres" value="#{vehiculeControler.vehicule.nombreCylindres}" title="NombreCylindres" required="true" requiredMessage="The NombreCylindres field is required."/>
-                                            <p:outputLabel value="PuissanceFiscale:" for="puissanceFiscale" />
-                                            <p:inputText id="puissanceFiscale" value="#{vehiculeControler.vehicule.puissanceFiscale}" title="PuissanceFiscale" required="true" requiredMessage="The PuissanceFiscale field is required."/>
-                                            <p:outputLabel value="NombrePlaces:" for="nombrePlaces" />
-                                            <p:inputText id="nombrePlaces" value="#{vehiculeControler.vehicule.nombrePlaces}" title="NombrePlaces" required="true" requiredMessage="The NombrePlaces field is required."/>
-                                            <p:outputLabel value="Ptac:" for="ptac" />
-                                            <p:inputText id="ptac" value="#{vehiculeControler.vehicule.ptac}" title="Ptac" required="true" requiredMessage="The Ptac field is required."/>
-                                            <p:outputLabel value="PoidsVide:" for="poidsVide" />
-                                            <p:inputText id="poidsVide" value="#{vehiculeControler.vehicule.poidsVide}" title="PoidsVide" required="true" requiredMessage="The PoidsVide field is required."/>
-                                            <p:outputLabel value="Ptmct:" for="ptmct" />
-                                            <p:inputText id="ptmct" value="#{vehiculeControler.vehicule.ptmct}" title="Ptmct" required="true" requiredMessage="The Ptmct field is required."/>
-                                            <p:outputLabel value="DureDeVie:" for="dureDeVie" />
-                                            <p:inputText id="dureDeVie" value="#{vehiculeControler.vehicule.dureDeVie}" title="DureDeVie" required="true" requiredMessage="The DureDeVie field is required."/>
-                                            <p:outputLabel value="KilometrageVehicule:" for="kilometrageVehicule" />
-                                            <p:inputText id="kilometrageVehicule" value="#{vehiculeControler.vehicule.kilometrageVehicule}" title="KilometrageVehicule" required="true" requiredMessage="The KilometrageVehicule field is required."/>
-                                        </h:panelGrid>
+
+                                        <p:splitButton value="New Proprietaire"  id="showPopsP"  oncomplete="PF('dlgProp').show()">
+                                                <p:menuitem value="New marque"  id="showPopsM"  oncomplete="PF('dlgMarq').show()"/>
+                                                <p:menuitem value="New Typevehicule" id="showPopsTv" oncomplete="PF('dlgTv').show()"/> 
+                                                <p:menuitem value="New Typecarburant" id="showPopsTc"  oncomplete="PF('dlgTc').show()"/>
+                                            </p:splitButton>
+                                        
                                     </h:form>
                                 </f:view>
 
 
-                                
+
+
                             </div>
                         </div>
-                        <!-- /. ROW  -->
+                         
                         <hr />
 
                     </div>
-                    <!-- /. PAGE INNER  -->
+                     /. PAGE INNER  
                 </div>
             </ui:define>
 
 
-      </ui:composition>
-        
+        </ui:composition>
+
     </h:body>
 </html>
 
