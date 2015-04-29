@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -28,17 +28,17 @@ public class Alerteasurance  implements java.io.Serializable {
 
 
      private Integer idAlerteAssurance;
-     private Vehicule vehicule;
-     private String desceription;
      private Date dateAlert;
+     private String desceription;
+     private Vehicule vehicule;
 
     public Alerteasurance() {
     }
 
-    public Alerteasurance(Vehicule vehicule, String desceription, Date dateAlert) {
-       this.vehicule = vehicule;
-       this.desceription = desceription;
+    public Alerteasurance(Date dateAlert, String desceription, Vehicule vehicule) {
        this.dateAlert = dateAlert;
+       this.desceription = desceription;
+       this.vehicule = vehicule;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -53,14 +53,14 @@ public class Alerteasurance  implements java.io.Serializable {
         this.idAlerteAssurance = idAlerteAssurance;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idVehicule", unique=true, nullable=false)
-    public Vehicule getVehicule() {
-        return this.vehicule;
+    @Temporal(TemporalType.DATE)
+    @Column(name="dateAlert", nullable=false, length=10)
+    public Date getDateAlert() {
+        return this.dateAlert;
     }
     
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
+    public void setDateAlert(Date dateAlert) {
+        this.dateAlert = dateAlert;
     }
 
     
@@ -73,14 +73,14 @@ public class Alerteasurance  implements java.io.Serializable {
         this.desceription = desceription;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="dateAlert", nullable=false, length=10)
-    public Date getDateAlert() {
-        return this.dateAlert;
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idVehicule", unique=true, nullable=false)
+    public Vehicule getVehicule() {
+        return this.vehicule;
     }
     
-    public void setDateAlert(Date dateAlert) {
-        this.dateAlert = dateAlert;
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 
 
