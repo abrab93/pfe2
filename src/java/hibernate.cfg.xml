@@ -32,5 +32,14 @@
     <mapping class="com.pfe.model.Typevehicule"/>
     <mapping class="com.pfe.model.Centrevisitetechnique"/>
     <mapping class="com.pfe.model.Categorie"/>
+    <mapping class="com.pfe.service.ProprietairevehiculeServiceImpl"/>
+    <mapping class="com.pfe.service.MarqueServiceImpl"/>
+    <mapping class="com.pfe.service.Proprietairevehicule"/>
+    <mapping class="com.pfe.service.UtilisateurServiceImpl"/>
+    <mapping class="com.pfe.service.TypecarburantServiceImpl"/>
+    <mapping class="com.pfe.service.VehiculeServiceImpl"/>
+    <mapping class="com.pfe.service.ServiceServiceImpl"/>
+    <mapping class="com.pfe.service.TypevehiculeServiceImpl"/>
+    <mapping class="com.pfe.service.TransactionServiceImpl"/>
   </session-factory>
 </hibernate-configuration>
