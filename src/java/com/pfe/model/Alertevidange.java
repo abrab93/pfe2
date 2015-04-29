@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -25,17 +25,17 @@ public class Alertevidange  implements java.io.Serializable {
 
 
      private Integer idAlerteVidange;
-     private Vehicule vehicule;
      private String desceription;
      private double kilometrageAlert;
+     private Vehicule vehicule;
 
     public Alertevidange() {
     }
 
-    public Alertevidange(Vehicule vehicule, String desceription, double kilometrageAlert) {
-       this.vehicule = vehicule;
+    public Alertevidange(String desceription, double kilometrageAlert, Vehicule vehicule) {
        this.desceription = desceription;
        this.kilometrageAlert = kilometrageAlert;
+       this.vehicule = vehicule;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -48,16 +48,6 @@ public class Alertevidange  implements java.io.Serializable {
     
     public void setIdAlerteVidange(Integer idAlerteVidange) {
         this.idAlerteVidange = idAlerteVidange;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idVehicule", unique=true, nullable=false)
-    public Vehicule getVehicule() {
-        return this.vehicule;
-    }
-    
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
     }
 
     
@@ -78,6 +68,16 @@ public class Alertevidange  implements java.io.Serializable {
     
     public void setKilometrageAlert(double kilometrageAlert) {
         this.kilometrageAlert = kilometrageAlert;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idVehicule", unique=true, nullable=false)
+    public Vehicule getVehicule() {
+        return this.vehicule;
+    }
+    
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 
 
