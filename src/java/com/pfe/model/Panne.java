@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -29,22 +29,22 @@ public class Panne  implements java.io.Serializable {
 
      private Integer idPanne;
      private Categorie categorie;
-     private Vehicule vehicule;
      private Date datePanne;
+     private String descriptionPanne;
      private Date heurePanne;
      private String lieuPanne;
-     private String descriptionPanne;
+     private Vehicule vehicule;
 
     public Panne() {
     }
 
-    public Panne(Categorie categorie, Vehicule vehicule, Date datePanne, Date heurePanne, String lieuPanne, String descriptionPanne) {
+    public Panne(Categorie categorie, Date datePanne, String descriptionPanne, Date heurePanne, String lieuPanne, Vehicule vehicule) {
        this.categorie = categorie;
-       this.vehicule = vehicule;
        this.datePanne = datePanne;
+       this.descriptionPanne = descriptionPanne;
        this.heurePanne = heurePanne;
        this.lieuPanne = lieuPanne;
-       this.descriptionPanne = descriptionPanne;
+       this.vehicule = vehicule;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -69,16 +69,6 @@ public class Panne  implements java.io.Serializable {
         this.categorie = categorie;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idVehicule", unique=true, nullable=false)
-    public Vehicule getVehicule() {
-        return this.vehicule;
-    }
-    
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
-    }
-
     @Temporal(TemporalType.DATE)
     @Column(name="datePanne", nullable=false, length=10)
     public Date getDatePanne() {
@@ -87,6 +77,16 @@ public class Panne  implements java.io.Serializable {
     
     public void setDatePanne(Date datePanne) {
         this.datePanne = datePanne;
+    }
+
+    
+    @Column(name="descriptionPanne", nullable=false, length=50)
+    public String getDescriptionPanne() {
+        return this.descriptionPanne;
+    }
+    
+    public void setDescriptionPanne(String descriptionPanne) {
+        this.descriptionPanne = descriptionPanne;
     }
 
     @Temporal(TemporalType.TIME)
@@ -109,14 +109,14 @@ public class Panne  implements java.io.Serializable {
         this.lieuPanne = lieuPanne;
     }
 
-    
-    @Column(name="descriptionPanne", nullable=false, length=50)
-    public String getDescriptionPanne() {
-        return this.descriptionPanne;
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idVehicule", unique=true, nullable=false)
+    public Vehicule getVehicule() {
+        return this.vehicule;
     }
     
-    public void setDescriptionPanne(String descriptionPanne) {
-        this.descriptionPanne = descriptionPanne;
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 
 

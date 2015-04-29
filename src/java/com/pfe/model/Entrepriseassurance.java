@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,28 +24,28 @@ public class Entrepriseassurance  implements java.io.Serializable {
 
 
      private Integer idEntrepriseAssurance;
-     private String numeroPolice;
-     private String nom;
      private String adresse;
-     private String intermediaire;
      private Set<Assurance> assurances = new HashSet<Assurance>(0);
+     private String intermediaire;
+     private String nom;
+     private String numeroPolice;
 
     public Entrepriseassurance() {
     }
 
 	
-    public Entrepriseassurance(String numeroPolice, String nom, String adresse, String intermediaire) {
-        this.numeroPolice = numeroPolice;
-        this.nom = nom;
+    public Entrepriseassurance(String adresse, String intermediaire, String nom, String numeroPolice) {
         this.adresse = adresse;
         this.intermediaire = intermediaire;
+        this.nom = nom;
+        this.numeroPolice = numeroPolice;
     }
-    public Entrepriseassurance(String numeroPolice, String nom, String adresse, String intermediaire, Set<Assurance> assurances) {
-       this.numeroPolice = numeroPolice;
-       this.nom = nom;
+    public Entrepriseassurance(String adresse, Set<Assurance> assurances, String intermediaire, String nom, String numeroPolice) {
        this.adresse = adresse;
-       this.intermediaire = intermediaire;
        this.assurances = assurances;
+       this.intermediaire = intermediaire;
+       this.nom = nom;
+       this.numeroPolice = numeroPolice;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -61,13 +61,32 @@ public class Entrepriseassurance  implements java.io.Serializable {
     }
 
     
-    @Column(name="numeroPolice", nullable=false, length=30)
-    public String getNumeroPolice() {
-        return this.numeroPolice;
+    @Column(name="adresse", nullable=false, length=30)
+    public String getAdresse() {
+        return this.adresse;
     }
     
-    public void setNumeroPolice(String numeroPolice) {
-        this.numeroPolice = numeroPolice;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="entrepriseassurance")
+    public Set<Assurance> getAssurances() {
+        return this.assurances;
+    }
+    
+    public void setAssurances(Set<Assurance> assurances) {
+        this.assurances = assurances;
+    }
+
+    
+    @Column(name="intermediaire", nullable=false, length=30)
+    public String getIntermediaire() {
+        return this.intermediaire;
+    }
+    
+    public void setIntermediaire(String intermediaire) {
+        this.intermediaire = intermediaire;
     }
 
     
@@ -81,32 +100,13 @@ public class Entrepriseassurance  implements java.io.Serializable {
     }
 
     
-    @Column(name="adresse", nullable=false, length=30)
-    public String getAdresse() {
-        return this.adresse;
+    @Column(name="numeroPolice", nullable=false, length=30)
+    public String getNumeroPolice() {
+        return this.numeroPolice;
     }
     
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    
-    @Column(name="intermediaire", nullable=false, length=30)
-    public String getIntermediaire() {
-        return this.intermediaire;
-    }
-    
-    public void setIntermediaire(String intermediaire) {
-        this.intermediaire = intermediaire;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="entrepriseassurance")
-    public Set<Assurance> getAssurances() {
-        return this.assurances;
-    }
-    
-    public void setAssurances(Set<Assurance> assurances) {
-        this.assurances = assurances;
+    public void setNumeroPolice(String numeroPolice) {
+        this.numeroPolice = numeroPolice;
     }
 
 

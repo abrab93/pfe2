@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -20,21 +20,21 @@ public class Centrevisitetechnique  implements java.io.Serializable {
 
 
      private Integer idCentreVisiteTechnique;
-     private String numeroAutorisation;
-     private String nomCentre;
      private String adresse;
-     private String tel;
      private String fax;
+     private String nomCentre;
+     private String numeroAutorisation;
+     private String tel;
 
     public Centrevisitetechnique() {
     }
 
-    public Centrevisitetechnique(String numeroAutorisation, String nomCentre, String adresse, String tel, String fax) {
-       this.numeroAutorisation = numeroAutorisation;
-       this.nomCentre = nomCentre;
+    public Centrevisitetechnique(String adresse, String fax, String nomCentre, String numeroAutorisation, String tel) {
        this.adresse = adresse;
-       this.tel = tel;
        this.fax = fax;
+       this.nomCentre = nomCentre;
+       this.numeroAutorisation = numeroAutorisation;
+       this.tel = tel;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -50,13 +50,23 @@ public class Centrevisitetechnique  implements java.io.Serializable {
     }
 
     
-    @Column(name="numeroAutorisation", nullable=false, length=30)
-    public String getNumeroAutorisation() {
-        return this.numeroAutorisation;
+    @Column(name="adresse", nullable=false, length=30)
+    public String getAdresse() {
+        return this.adresse;
     }
     
-    public void setNumeroAutorisation(String numeroAutorisation) {
-        this.numeroAutorisation = numeroAutorisation;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    
+    @Column(name="fax", nullable=false, length=15)
+    public String getFax() {
+        return this.fax;
+    }
+    
+    public void setFax(String fax) {
+        this.fax = fax;
     }
 
     
@@ -70,13 +80,13 @@ public class Centrevisitetechnique  implements java.io.Serializable {
     }
 
     
-    @Column(name="adresse", nullable=false, length=30)
-    public String getAdresse() {
-        return this.adresse;
+    @Column(name="numeroAutorisation", nullable=false, length=30)
+    public String getNumeroAutorisation() {
+        return this.numeroAutorisation;
     }
     
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setNumeroAutorisation(String numeroAutorisation) {
+        this.numeroAutorisation = numeroAutorisation;
     }
 
     
@@ -87,16 +97,6 @@ public class Centrevisitetechnique  implements java.io.Serializable {
     
     public void setTel(String tel) {
         this.tel = tel;
-    }
-
-    
-    @Column(name="fax", nullable=false, length=15)
-    public String getFax() {
-        return this.fax;
-    }
-    
-    public void setFax(String fax) {
-        this.fax = fax;
     }
 
 

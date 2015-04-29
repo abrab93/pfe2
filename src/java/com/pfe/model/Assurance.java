@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -28,23 +28,23 @@ public class Assurance  implements java.io.Serializable {
 
 
      private Integer idAssurance;
-     private Entrepriseassurance entrepriseassurance;
-     private Vehicule vehicule;
-     private String numeroOrdre;
+     private Date dateAssurance;
      private Date dateDebut;
      private Date dateFin;
-     private Date dateAssurance;
+     private Entrepriseassurance entrepriseassurance;
+     private String numeroOrdre;
+     private Vehicule vehicule;
 
     public Assurance() {
     }
 
-    public Assurance(Entrepriseassurance entrepriseassurance, Vehicule vehicule, String numeroOrdre, Date dateDebut, Date dateFin, Date dateAssurance) {
-       this.entrepriseassurance = entrepriseassurance;
-       this.vehicule = vehicule;
-       this.numeroOrdre = numeroOrdre;
+    public Assurance(Date dateAssurance, Date dateDebut, Date dateFin, Entrepriseassurance entrepriseassurance, String numeroOrdre, Vehicule vehicule) {
+       this.dateAssurance = dateAssurance;
        this.dateDebut = dateDebut;
        this.dateFin = dateFin;
-       this.dateAssurance = dateAssurance;
+       this.entrepriseassurance = entrepriseassurance;
+       this.numeroOrdre = numeroOrdre;
+       this.vehicule = vehicule;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -59,34 +59,14 @@ public class Assurance  implements java.io.Serializable {
         this.idAssurance = idAssurance;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idEntrepriseAssurance", unique=true, nullable=false)
-    public Entrepriseassurance getEntrepriseassurance() {
-        return this.entrepriseassurance;
+    @Temporal(TemporalType.DATE)
+    @Column(name="dateAssurance", nullable=false, length=10)
+    public Date getDateAssurance() {
+        return this.dateAssurance;
     }
     
-    public void setEntrepriseassurance(Entrepriseassurance entrepriseassurance) {
-        this.entrepriseassurance = entrepriseassurance;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idVehicule", unique=true, nullable=false)
-    public Vehicule getVehicule() {
-        return this.vehicule;
-    }
-    
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
-    }
-
-    
-    @Column(name="numeroOrdre", nullable=false, length=30)
-    public String getNumeroOrdre() {
-        return this.numeroOrdre;
-    }
-    
-    public void setNumeroOrdre(String numeroOrdre) {
-        this.numeroOrdre = numeroOrdre;
+    public void setDateAssurance(Date dateAssurance) {
+        this.dateAssurance = dateAssurance;
     }
 
     @Temporal(TemporalType.DATE)
@@ -109,14 +89,34 @@ public class Assurance  implements java.io.Serializable {
         this.dateFin = dateFin;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="dateAssurance", nullable=false, length=10)
-    public Date getDateAssurance() {
-        return this.dateAssurance;
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idEntrepriseAssurance", unique=true, nullable=false)
+    public Entrepriseassurance getEntrepriseassurance() {
+        return this.entrepriseassurance;
     }
     
-    public void setDateAssurance(Date dateAssurance) {
-        this.dateAssurance = dateAssurance;
+    public void setEntrepriseassurance(Entrepriseassurance entrepriseassurance) {
+        this.entrepriseassurance = entrepriseassurance;
+    }
+
+    
+    @Column(name="numeroOrdre", nullable=false, length=30)
+    public String getNumeroOrdre() {
+        return this.numeroOrdre;
+    }
+    
+    public void setNumeroOrdre(String numeroOrdre) {
+        this.numeroOrdre = numeroOrdre;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idVehicule", unique=true, nullable=false)
+    public Vehicule getVehicule() {
+        return this.vehicule;
+    }
+    
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 
 
