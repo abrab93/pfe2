@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -28,19 +28,19 @@ public class Vignette  implements java.io.Serializable {
 
 
      private Integer idVignette;
-     private Vehicule vehicule;
      private Date dateDebut;
      private Date dateFin;
      private String genre;
+     private Vehicule vehicule;
 
     public Vignette() {
     }
 
-    public Vignette(Vehicule vehicule, Date dateDebut, Date dateFin, String genre) {
-       this.vehicule = vehicule;
+    public Vignette(Date dateDebut, Date dateFin, String genre, Vehicule vehicule) {
        this.dateDebut = dateDebut;
        this.dateFin = dateFin;
        this.genre = genre;
+       this.vehicule = vehicule;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -53,16 +53,6 @@ public class Vignette  implements java.io.Serializable {
     
     public void setIdVignette(Integer idVignette) {
         this.idVignette = idVignette;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idVehicule", unique=true, nullable=false)
-    public Vehicule getVehicule() {
-        return this.vehicule;
-    }
-    
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
     }
 
     @Temporal(TemporalType.DATE)
@@ -93,6 +83,16 @@ public class Vignette  implements java.io.Serializable {
     
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idVehicule", unique=true, nullable=false)
+    public Vehicule getVehicule() {
+        return this.vehicule;
+    }
+    
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 
 

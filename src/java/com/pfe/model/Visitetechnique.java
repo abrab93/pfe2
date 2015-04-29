@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -23,28 +23,28 @@ public class Visitetechnique  implements java.io.Serializable {
 
      private Integer idVisiteTechnique;
      private int dateControle;
-     private int kilometrage;
-     private int ripage;
-     private int opacite;
+     private int dateProchaineVisite;
      private int eefFrScv;
      private int eefFrSt;
-     private int dateProchaineVisite;
      private int idCentreVisiteTechnique;
      private int idVehicule;
+     private int kilometrage;
+     private int opacite;
+     private int ripage;
 
     public Visitetechnique() {
     }
 
-    public Visitetechnique(int dateControle, int kilometrage, int ripage, int opacite, int eefFrScv, int eefFrSt, int dateProchaineVisite, int idCentreVisiteTechnique, int idVehicule) {
+    public Visitetechnique(int dateControle, int dateProchaineVisite, int eefFrScv, int eefFrSt, int idCentreVisiteTechnique, int idVehicule, int kilometrage, int opacite, int ripage) {
        this.dateControle = dateControle;
-       this.kilometrage = kilometrage;
-       this.ripage = ripage;
-       this.opacite = opacite;
+       this.dateProchaineVisite = dateProchaineVisite;
        this.eefFrScv = eefFrScv;
        this.eefFrSt = eefFrSt;
-       this.dateProchaineVisite = dateProchaineVisite;
        this.idCentreVisiteTechnique = idCentreVisiteTechnique;
        this.idVehicule = idVehicule;
+       this.kilometrage = kilometrage;
+       this.opacite = opacite;
+       this.ripage = ripage;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -70,33 +70,13 @@ public class Visitetechnique  implements java.io.Serializable {
     }
 
     
-    @Column(name="kilometrage", nullable=false)
-    public int getKilometrage() {
-        return this.kilometrage;
+    @Column(name="dateProchaineVisite", nullable=false)
+    public int getDateProchaineVisite() {
+        return this.dateProchaineVisite;
     }
     
-    public void setKilometrage(int kilometrage) {
-        this.kilometrage = kilometrage;
-    }
-
-    
-    @Column(name="ripage", nullable=false)
-    public int getRipage() {
-        return this.ripage;
-    }
-    
-    public void setRipage(int ripage) {
-        this.ripage = ripage;
-    }
-
-    
-    @Column(name="opacite", nullable=false)
-    public int getOpacite() {
-        return this.opacite;
-    }
-    
-    public void setOpacite(int opacite) {
-        this.opacite = opacite;
+    public void setDateProchaineVisite(int dateProchaineVisite) {
+        this.dateProchaineVisite = dateProchaineVisite;
     }
 
     
@@ -120,16 +100,6 @@ public class Visitetechnique  implements java.io.Serializable {
     }
 
     
-    @Column(name="dateProchaineVisite", nullable=false)
-    public int getDateProchaineVisite() {
-        return this.dateProchaineVisite;
-    }
-    
-    public void setDateProchaineVisite(int dateProchaineVisite) {
-        this.dateProchaineVisite = dateProchaineVisite;
-    }
-
-    
     @Column(name="idCentreVisiteTechnique", unique=true, nullable=false)
     public int getIdCentreVisiteTechnique() {
         return this.idCentreVisiteTechnique;
@@ -147,6 +117,36 @@ public class Visitetechnique  implements java.io.Serializable {
     
     public void setIdVehicule(int idVehicule) {
         this.idVehicule = idVehicule;
+    }
+
+    
+    @Column(name="kilometrage", nullable=false)
+    public int getKilometrage() {
+        return this.kilometrage;
+    }
+    
+    public void setKilometrage(int kilometrage) {
+        this.kilometrage = kilometrage;
+    }
+
+    
+    @Column(name="opacite", nullable=false)
+    public int getOpacite() {
+        return this.opacite;
+    }
+    
+    public void setOpacite(int opacite) {
+        this.opacite = opacite;
+    }
+
+    
+    @Column(name="ripage", nullable=false)
+    public int getRipage() {
+        return this.ripage;
+    }
+    
+    public void setRipage(int ripage) {
+        this.ripage = ripage;
     }
 
 
