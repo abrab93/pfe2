@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -28,36 +28,36 @@ public class Utilisateur  implements java.io.Serializable {
 
 
      private Integer idUtilisateur;
-     private Service service=new Service();
+     private boolean blocked;
+     private String email;
+     private String nomPrenom;
      private String nomUtilisateur;
      private String passWord;
-     private String email;
      private String rrole;
-     private String nomPrenom;
-     private boolean blocked;
+     private Service service=new Service();
      private Set<Transaction> transactions = new HashSet<Transaction>(0);
 
     public Utilisateur() {
     }
 
 	
-    public Utilisateur(Service service, String nomUtilisateur, String passWord, String email, String role, String nomPrenom, boolean blocked) {
-        this.service = service;
+    public Utilisateur(boolean blocked, String email, String nomPrenom, String nomUtilisateur, String passWord, String rrole, Service service) {
+        this.blocked = blocked;
+        this.email = email;
+        this.nomPrenom = nomPrenom;
         this.nomUtilisateur = nomUtilisateur;
         this.passWord = passWord;
-        this.email = email;
-        this.rrole = role;
-        this.nomPrenom = nomPrenom;
-        this.blocked = blocked;
+        this.rrole = rrole;
+        this.service = service;
     }
-    public Utilisateur(Service service, String nomUtilisateur, String passWord, String email, String role, String nomPrenom, boolean blocked, Set<Transaction> transactions) {
-       this.service = service;
+    public Utilisateur(boolean blocked, String email, String nomPrenom, String nomUtilisateur, String passWord, String rrole, Service service, Set<Transaction> transactions) {
+       this.blocked = blocked;
+       this.email = email;
+       this.nomPrenom = nomPrenom;
        this.nomUtilisateur = nomUtilisateur;
        this.passWord = passWord;
-       this.email = email;
-       this.rrole = role;
-       this.nomPrenom = nomPrenom;
-       this.blocked = blocked;
+       this.rrole = rrole;
+       this.service = service;
        this.transactions = transactions;
     }
    
@@ -73,14 +73,34 @@ public class Utilisateur  implements java.io.Serializable {
         this.idUtilisateur = idUtilisateur;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="idService", unique=true, nullable=false)
-    public Service getService() {
-        return this.service;
+    
+    @Column(name="blocked", nullable=false)
+    public boolean isBlocked() {
+        return this.blocked;
     }
     
-    public void setService(Service service) {
-        this.service = service;
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    
+    @Column(name="email", nullable=false, length=20)
+    public String getEmail() {
+        return this.email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    @Column(name="nomPrenom", nullable=false, length=20)
+    public String getNomPrenom() {
+        return this.nomPrenom;
+    }
+    
+    public void setNomPrenom(String nomPrenom) {
+        this.nomPrenom = nomPrenom;
     }
 
     
@@ -104,16 +124,7 @@ public class Utilisateur  implements java.io.Serializable {
     }
 
     
-    @Column(name="email", nullable=false, length=20)
-    public String getEmail() {
-        return this.email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-     @Column(name="rrole", nullable=false, length=20)
+    @Column(name="rrole", nullable=false, length=20)
     public String getRrole() {
         return this.rrole;
     }
@@ -121,24 +132,15 @@ public class Utilisateur  implements java.io.Serializable {
     public void setRrole(String rrole) {
         this.rrole = rrole;
     }
-    
-    @Column(name="nomPrenom", nullable=false, length=20)
-    public String getNomPrenom() {
-        return this.nomPrenom;
-    }
-    
-    public void setNomPrenom(String nomPrenom) {
-        this.nomPrenom = nomPrenom;
-    }
 
-    
-    @Column(name="blocked", nullable=false)
-    public boolean isBlocked() {
-        return this.blocked;
+@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="idService", unique=true, nullable=false)
+    public Service getService() {
+        return this.service;
     }
     
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
+    public void setService(Service service) {
+        this.service = service;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="utilisateur")
@@ -150,35 +152,6 @@ public class Utilisateur  implements java.io.Serializable {
         this.transactions = transactions;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + (this.idUtilisateur != null ? this.idUtilisateur.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Utilisateur other = (Utilisateur) obj;
-        if (this.idUtilisateur != other.idUtilisateur && (this.idUtilisateur == null || !this.idUtilisateur.equals(other.idUtilisateur))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Utilisateur{" + "idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur + ", passWord=" + passWord + ", email=" + email + ", rrole=" + rrole + ", nomPrenom=" + nomPrenom + ", blocked=" + blocked + '}';
-    }
-
-
-    
 
 
 

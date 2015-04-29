@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -28,27 +28,27 @@ public class Pneu  implements java.io.Serializable {
 
 
      private Integer idPneu;
-     private Vehicule vehicule;
-     private String referencePneu;
-     private String numeroSerie;
-     private double kilometrage;
-     private Date dateMontage;
      private Date dateDemontage;
+     private Date dateMontage;
+     private double kilometrage;
      private String marque;
+     private String numeroSerie;
      private String observation;
+     private String referencePneu;
+     private Vehicule vehicule;
 
     public Pneu() {
     }
 
-    public Pneu(Vehicule vehicule, String referencePneu, String numeroSerie, double kilometrage, Date dateMontage, Date dateDemontage, String marque, String observation) {
-       this.vehicule = vehicule;
-       this.referencePneu = referencePneu;
-       this.numeroSerie = numeroSerie;
-       this.kilometrage = kilometrage;
-       this.dateMontage = dateMontage;
+    public Pneu(Date dateDemontage, Date dateMontage, double kilometrage, String marque, String numeroSerie, String observation, String referencePneu, Vehicule vehicule) {
        this.dateDemontage = dateDemontage;
+       this.dateMontage = dateMontage;
+       this.kilometrage = kilometrage;
        this.marque = marque;
+       this.numeroSerie = numeroSerie;
        this.observation = observation;
+       this.referencePneu = referencePneu;
+       this.vehicule = vehicule;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -63,44 +63,14 @@ public class Pneu  implements java.io.Serializable {
         this.idPneu = idPneu;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idVehicule", unique=true, nullable=false)
-    public Vehicule getVehicule() {
-        return this.vehicule;
+    @Temporal(TemporalType.DATE)
+    @Column(name="dateDemontage", nullable=false, length=10)
+    public Date getDateDemontage() {
+        return this.dateDemontage;
     }
     
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
-    }
-
-    
-    @Column(name="referencePneu", nullable=false, length=30)
-    public String getReferencePneu() {
-        return this.referencePneu;
-    }
-    
-    public void setReferencePneu(String referencePneu) {
-        this.referencePneu = referencePneu;
-    }
-
-    
-    @Column(name="numeroSerie", nullable=false, length=30)
-    public String getNumeroSerie() {
-        return this.numeroSerie;
-    }
-    
-    public void setNumeroSerie(String numeroSerie) {
-        this.numeroSerie = numeroSerie;
-    }
-
-    
-    @Column(name="kilometrage", nullable=false, precision=22, scale=0)
-    public double getKilometrage() {
-        return this.kilometrage;
-    }
-    
-    public void setKilometrage(double kilometrage) {
-        this.kilometrage = kilometrage;
+    public void setDateDemontage(Date dateDemontage) {
+        this.dateDemontage = dateDemontage;
     }
 
     @Temporal(TemporalType.DATE)
@@ -113,14 +83,14 @@ public class Pneu  implements java.io.Serializable {
         this.dateMontage = dateMontage;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="dateDemontage", nullable=false, length=10)
-    public Date getDateDemontage() {
-        return this.dateDemontage;
+    
+    @Column(name="kilometrage", nullable=false, precision=22, scale=0)
+    public double getKilometrage() {
+        return this.kilometrage;
     }
     
-    public void setDateDemontage(Date dateDemontage) {
-        this.dateDemontage = dateDemontage;
+    public void setKilometrage(double kilometrage) {
+        this.kilometrage = kilometrage;
     }
 
     
@@ -134,6 +104,16 @@ public class Pneu  implements java.io.Serializable {
     }
 
     
+    @Column(name="numeroSerie", nullable=false, length=30)
+    public String getNumeroSerie() {
+        return this.numeroSerie;
+    }
+    
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
+    }
+
+    
     @Column(name="observation", nullable=false, length=40)
     public String getObservation() {
         return this.observation;
@@ -141,6 +121,26 @@ public class Pneu  implements java.io.Serializable {
     
     public void setObservation(String observation) {
         this.observation = observation;
+    }
+
+    
+    @Column(name="referencePneu", nullable=false, length=30)
+    public String getReferencePneu() {
+        return this.referencePneu;
+    }
+    
+    public void setReferencePneu(String referencePneu) {
+        this.referencePneu = referencePneu;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idVehicule", unique=true, nullable=false)
+    public Vehicule getVehicule() {
+        return this.vehicule;
+    }
+    
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 
 

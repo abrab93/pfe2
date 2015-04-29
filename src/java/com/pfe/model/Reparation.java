@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

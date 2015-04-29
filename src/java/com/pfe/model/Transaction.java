@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -28,17 +28,17 @@ public class Transaction  implements java.io.Serializable {
 
 
      private Integer idTransaction;
-     private Utilisateur utilisateur;
-     private String libelleTransaction;
      private Date dateTransaction;
+     private String libelleTransaction;
+     private Utilisateur utilisateur;
 
     public Transaction() {
     }
 
-    public Transaction(Utilisateur utilisateur, String libelleTransaction, Date dateTransaction) {
-       this.utilisateur = utilisateur;
-       this.libelleTransaction = libelleTransaction;
+    public Transaction(Date dateTransaction, String libelleTransaction, Utilisateur utilisateur) {
        this.dateTransaction = dateTransaction;
+       this.libelleTransaction = libelleTransaction;
+       this.utilisateur = utilisateur;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -53,14 +53,14 @@ public class Transaction  implements java.io.Serializable {
         this.idTransaction = idTransaction;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idUtilisateur", unique=true, nullable=false)
-    public Utilisateur getUtilisateur() {
-        return this.utilisateur;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="dateTransaction", nullable=false, length=19)
+    public Date getDateTransaction() {
+        return this.dateTransaction;
     }
     
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setDateTransaction(Date dateTransaction) {
+        this.dateTransaction = dateTransaction;
     }
 
     
@@ -73,14 +73,14 @@ public class Transaction  implements java.io.Serializable {
         this.libelleTransaction = libelleTransaction;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="dateTransaction", nullable=false, length=19)
-    public Date getDateTransaction() {
-        return this.dateTransaction;
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idUtilisateur", unique=true, nullable=false)
+    public Utilisateur getUtilisateur() {
+        return this.utilisateur;
     }
     
-    public void setDateTransaction(Date dateTransaction) {
-        this.dateTransaction = dateTransaction;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
 

@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,27 +24,27 @@ public class Proprietairevehicule  implements java.io.Serializable {
 
 
      private Integer idProprietaire;
-     private String nom;
-     private String prenom;
      private String adresse;
      private String cinRc;
+     private String nom;
+     private String prenom;
      private Set<Vehicule> vehicules = new HashSet<Vehicule>(0);
 
     public Proprietairevehicule() {
     }
 
 	
-    public Proprietairevehicule(String nom, String prenom, String adresse, String cinRc) {
-        this.nom = nom;
-        this.prenom = prenom;
+    public Proprietairevehicule(String adresse, String cinRc, String nom, String prenom) {
         this.adresse = adresse;
         this.cinRc = cinRc;
+        this.nom = nom;
+        this.prenom = prenom;
     }
-    public Proprietairevehicule(String nom, String prenom, String adresse, String cinRc, Set<Vehicule> vehicules) {
-       this.nom = nom;
-       this.prenom = prenom;
+    public Proprietairevehicule(String adresse, String cinRc, String nom, String prenom, Set<Vehicule> vehicules) {
        this.adresse = adresse;
        this.cinRc = cinRc;
+       this.nom = nom;
+       this.prenom = prenom;
        this.vehicules = vehicules;
     }
    
@@ -58,6 +58,26 @@ public class Proprietairevehicule  implements java.io.Serializable {
     
     public void setIdProprietaire(Integer idProprietaire) {
         this.idProprietaire = idProprietaire;
+    }
+
+    
+    @Column(name="adresse", nullable=false, length=40)
+    public String getAdresse() {
+        return this.adresse;
+    }
+    
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    
+    @Column(name="cinRC", nullable=false, length=30)
+    public String getCinRc() {
+        return this.cinRc;
+    }
+    
+    public void setCinRc(String cinRc) {
+        this.cinRc = cinRc;
     }
 
     
@@ -78,26 +98,6 @@ public class Proprietairevehicule  implements java.io.Serializable {
     
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    
-    @Column(name="adresse", nullable=false, length=40)
-    public String getAdresse() {
-        return this.adresse;
-    }
-    
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    
-    @Column(name="cin _RC", nullable=false, length=30)
-    public String getCinRc() {
-        return this.cinRc;
-    }
-    
-    public void setCinRc(String cinRc) {
-        this.cinRc = cinRc;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="proprietairevehicule")

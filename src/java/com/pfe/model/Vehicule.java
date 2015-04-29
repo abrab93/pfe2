@@ -1,5 +1,5 @@
 package com.pfe.model;
-// Generated 19 avr. 2015 15:18:14 by Hibernate Tools 4.3.1
+// Generated 29 avr. 2015 00:11:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -31,88 +31,88 @@ public class Vehicule  implements java.io.Serializable {
 
 
      private Integer idVehicule;
-     private Marque marque;
-     private Proprietairevehicule proprietairevehicule;
-     private Typecarburant typecarburant;
-     private Typevehicule typevehicule;
-     private String immatriculation;
-     private Date date1mc;
-     private Date date1mcmaroc;
-     private String usageVehicule;
-     private String numeroChassis;
-     private int nombreCylindres;
-     private int puissanceFiscale;
-     private int nombrePlaces;
-     private double ptac;
-     private double poidsVide;
-     private double ptmct;
-     private boolean remorque;
-     private double dureDeVie;
-     private double kilometrageVehicule;
      private Set<Alerteasurance> alerteasurances = new HashSet<Alerteasurance>(0);
      private Set<Alertepneu> alertepneus = new HashSet<Alertepneu>(0);
+     private Set<Alertevidange> alertevidanges = new HashSet<Alertevidange>(0);
+     private Set<Alertevignette> alertevignettes = new HashSet<Alertevignette>(0);
      private Set<Alertevisitetechnique> alertevisitetechniques = new HashSet<Alertevisitetechnique>(0);
+     private Set<Assurance> assurances = new HashSet<Assurance>(0);
+     private Date date1mc;
+     private Date date1mcmaroc;
+     private double dureDeVie;
+     private String immatriculation;
+     private double kilometrageVehicule;
+     private Marque marque=new Marque();
+     private int nombreCylindres;
+     private int nombrePlaces;
+     private String numeroChassis;
      private Set<Panne> pannes = new HashSet<Panne>(0);
      private Set<Pneu> pneus = new HashSet<Pneu>(0);
-     private Set<Vignette> vignettes = new HashSet<Vignette>(0);
+     private double poidsVide;
+     private Proprietairevehicule proprietairevehicule=new Proprietairevehicule();
+     private double ptac;
+     private double ptmct;
+     private int puissanceFiscale;
+     private boolean remorque;
+     private Typecarburant typecarburant=new Typecarburant();
+     private Typevehicule typevehicule=new Typevehicule();
+     private String usageVehicule;
      private Set<Vidange> vidanges = new HashSet<Vidange>(0);
-     private Set<Alertevidange> alertevidanges = new HashSet<Alertevidange>(0);
-     private Set<Assurance> assurances = new HashSet<Assurance>(0);
-     private Set<Alertevignette> alertevignettes = new HashSet<Alertevignette>(0);
+     private Set<Vignette> vignettes = new HashSet<Vignette>(0);
 
     public Vehicule() {
     }
 
 	
-    public Vehicule(Marque marque, Proprietairevehicule proprietairevehicule, Typecarburant typecarburant, Typevehicule typevehicule, String immatriculation, Date date1mc, Date date1mcmaroc, String usageVehicule, String numeroChassis, int nombreCylindres, int puissanceFiscale, int nombrePlaces, double ptac, double poidsVide, double ptmct, boolean remorque, double dureDeVie, double kilometrageVehicule) {
-        this.marque = marque;
-        this.proprietairevehicule = proprietairevehicule;
-        this.typecarburant = typecarburant;
-        this.typevehicule = typevehicule;
-        this.immatriculation = immatriculation;
+    public Vehicule(Date date1mc, Date date1mcmaroc, double dureDeVie, String immatriculation, double kilometrageVehicule, Marque marque, int nombreCylindres, int nombrePlaces, String numeroChassis, double poidsVide, Proprietairevehicule proprietairevehicule, double ptac, double ptmct, int puissanceFiscale, boolean remorque, Typecarburant typecarburant, Typevehicule typevehicule, String usageVehicule) {
         this.date1mc = date1mc;
         this.date1mcmaroc = date1mcmaroc;
-        this.usageVehicule = usageVehicule;
-        this.numeroChassis = numeroChassis;
-        this.nombreCylindres = nombreCylindres;
-        this.puissanceFiscale = puissanceFiscale;
-        this.nombrePlaces = nombrePlaces;
-        this.ptac = ptac;
-        this.poidsVide = poidsVide;
-        this.ptmct = ptmct;
-        this.remorque = remorque;
         this.dureDeVie = dureDeVie;
+        this.immatriculation = immatriculation;
         this.kilometrageVehicule = kilometrageVehicule;
+        this.marque = marque;
+        this.nombreCylindres = nombreCylindres;
+        this.nombrePlaces = nombrePlaces;
+        this.numeroChassis = numeroChassis;
+        this.poidsVide = poidsVide;
+        this.proprietairevehicule = proprietairevehicule;
+        this.ptac = ptac;
+        this.ptmct = ptmct;
+        this.puissanceFiscale = puissanceFiscale;
+        this.remorque = remorque;
+        this.typecarburant = typecarburant;
+        this.typevehicule = typevehicule;
+        this.usageVehicule = usageVehicule;
     }
-    public Vehicule(Marque marque, Proprietairevehicule proprietairevehicule, Typecarburant typecarburant, Typevehicule typevehicule, String immatriculation, Date date1mc, Date date1mcmaroc, String usageVehicule, String numeroChassis, int nombreCylindres, int puissanceFiscale, int nombrePlaces, double ptac, double poidsVide, double ptmct, boolean remorque, double dureDeVie, double kilometrageVehicule, Set<Alerteasurance> alerteasurances, Set<Alertepneu> alertepneus, Set<Alertevisitetechnique> alertevisitetechniques, Set<Panne> pannes, Set<Pneu> pneus, Set<Vignette> vignettes, Set<Vidange> vidanges, Set<Alertevidange> alertevidanges, Set<Assurance> assurances, Set<Alertevignette> alertevignettes) {
-       this.marque = marque;
-       this.proprietairevehicule = proprietairevehicule;
-       this.typecarburant = typecarburant;
-       this.typevehicule = typevehicule;
-       this.immatriculation = immatriculation;
-       this.date1mc = date1mc;
-       this.date1mcmaroc = date1mcmaroc;
-       this.usageVehicule = usageVehicule;
-       this.numeroChassis = numeroChassis;
-       this.nombreCylindres = nombreCylindres;
-       this.puissanceFiscale = puissanceFiscale;
-       this.nombrePlaces = nombrePlaces;
-       this.ptac = ptac;
-       this.poidsVide = poidsVide;
-       this.ptmct = ptmct;
-       this.remorque = remorque;
-       this.dureDeVie = dureDeVie;
-       this.kilometrageVehicule = kilometrageVehicule;
+    public Vehicule(Set<Alerteasurance> alerteasurances, Set<Alertepneu> alertepneus, Set<Alertevidange> alertevidanges, Set<Alertevignette> alertevignettes, Set<Alertevisitetechnique> alertevisitetechniques, Set<Assurance> assurances, Date date1mc, Date date1mcmaroc, double dureDeVie, String immatriculation, double kilometrageVehicule, Marque marque, int nombreCylindres, int nombrePlaces, String numeroChassis, Set<Panne> pannes, Set<Pneu> pneus, double poidsVide, Proprietairevehicule proprietairevehicule, double ptac, double ptmct, int puissanceFiscale, boolean remorque, Typecarburant typecarburant, Typevehicule typevehicule, String usageVehicule, Set<Vidange> vidanges, Set<Vignette> vignettes) {
        this.alerteasurances = alerteasurances;
        this.alertepneus = alertepneus;
+       this.alertevidanges = alertevidanges;
+       this.alertevignettes = alertevignettes;
        this.alertevisitetechniques = alertevisitetechniques;
+       this.assurances = assurances;
+       this.date1mc = date1mc;
+       this.date1mcmaroc = date1mcmaroc;
+       this.dureDeVie = dureDeVie;
+       this.immatriculation = immatriculation;
+       this.kilometrageVehicule = kilometrageVehicule;
+       this.marque = marque;
+       this.nombreCylindres = nombreCylindres;
+       this.nombrePlaces = nombrePlaces;
+       this.numeroChassis = numeroChassis;
        this.pannes = pannes;
        this.pneus = pneus;
-       this.vignettes = vignettes;
+       this.poidsVide = poidsVide;
+       this.proprietairevehicule = proprietairevehicule;
+       this.ptac = ptac;
+       this.ptmct = ptmct;
+       this.puissanceFiscale = puissanceFiscale;
+       this.remorque = remorque;
+       this.typecarburant = typecarburant;
+       this.typevehicule = typevehicule;
+       this.usageVehicule = usageVehicule;
        this.vidanges = vidanges;
-       this.alertevidanges = alertevidanges;
-       this.assurances = assurances;
-       this.alertevignettes = alertevignettes;
+       this.vignettes = vignettes;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -127,54 +127,58 @@ public class Vehicule  implements java.io.Serializable {
         this.idVehicule = idVehicule;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idMarque", unique=true, nullable=false)
-    public Marque getMarque() {
-        return this.marque;
+@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
+    public Set<Alerteasurance> getAlerteasurances() {
+        return this.alerteasurances;
     }
     
-    public void setMarque(Marque marque) {
-        this.marque = marque;
+    public void setAlerteasurances(Set<Alerteasurance> alerteasurances) {
+        this.alerteasurances = alerteasurances;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idProprietaire", unique=true, nullable=false)
-    public Proprietairevehicule getProprietairevehicule() {
-        return this.proprietairevehicule;
+@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
+    public Set<Alertepneu> getAlertepneus() {
+        return this.alertepneus;
     }
     
-    public void setProprietairevehicule(Proprietairevehicule proprietairevehicule) {
-        this.proprietairevehicule = proprietairevehicule;
+    public void setAlertepneus(Set<Alertepneu> alertepneus) {
+        this.alertepneus = alertepneus;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idTypeCarburant", unique=true, nullable=false)
-    public Typecarburant getTypecarburant() {
-        return this.typecarburant;
+@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
+    public Set<Alertevidange> getAlertevidanges() {
+        return this.alertevidanges;
     }
     
-    public void setTypecarburant(Typecarburant typecarburant) {
-        this.typecarburant = typecarburant;
+    public void setAlertevidanges(Set<Alertevidange> alertevidanges) {
+        this.alertevidanges = alertevidanges;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idTypeVehicule", unique=true, nullable=false)
-    public Typevehicule getTypevehicule() {
-        return this.typevehicule;
+@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
+    public Set<Alertevignette> getAlertevignettes() {
+        return this.alertevignettes;
     }
     
-    public void setTypevehicule(Typevehicule typevehicule) {
-        this.typevehicule = typevehicule;
+    public void setAlertevignettes(Set<Alertevignette> alertevignettes) {
+        this.alertevignettes = alertevignettes;
     }
 
-    
-    @Column(name="immatriculation", nullable=false, length=30)
-    public String getImmatriculation() {
-        return this.immatriculation;
+@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
+    public Set<Alertevisitetechnique> getAlertevisitetechniques() {
+        return this.alertevisitetechniques;
     }
     
-    public void setImmatriculation(String immatriculation) {
-        this.immatriculation = immatriculation;
+    public void setAlertevisitetechniques(Set<Alertevisitetechnique> alertevisitetechniques) {
+        this.alertevisitetechniques = alertevisitetechniques;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
+    public Set<Assurance> getAssurances() {
+        return this.assurances;
+    }
+    
+    public void setAssurances(Set<Assurance> assurances) {
+        this.assurances = assurances;
     }
 
     @Temporal(TemporalType.DATE)
@@ -198,23 +202,43 @@ public class Vehicule  implements java.io.Serializable {
     }
 
     
-    @Column(name="usageVehicule", nullable=false, length=40)
-    public String getUsageVehicule() {
-        return this.usageVehicule;
+    @Column(name="dureDeVie", nullable=false, precision=22, scale=0)
+    public double getDureDeVie() {
+        return this.dureDeVie;
     }
     
-    public void setUsageVehicule(String usageVehicule) {
-        this.usageVehicule = usageVehicule;
+    public void setDureDeVie(double dureDeVie) {
+        this.dureDeVie = dureDeVie;
     }
 
     
-    @Column(name="numeroChassis", nullable=false, length=40)
-    public String getNumeroChassis() {
-        return this.numeroChassis;
+    @Column(name="immatriculation", nullable=false, length=30)
+    public String getImmatriculation() {
+        return this.immatriculation;
     }
     
-    public void setNumeroChassis(String numeroChassis) {
-        this.numeroChassis = numeroChassis;
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
+    }
+
+    
+    @Column(name="kilometrageVehicule", nullable=false, precision=22, scale=0)
+    public double getKilometrageVehicule() {
+        return this.kilometrageVehicule;
+    }
+    
+    public void setKilometrageVehicule(double kilometrageVehicule) {
+        this.kilometrageVehicule = kilometrageVehicule;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idMarque", unique=true, nullable=false)
+    public Marque getMarque() {
+        return this.marque;
+    }
+    
+    public void setMarque(Marque marque) {
+        this.marque = marque;
     }
 
     
@@ -228,16 +252,6 @@ public class Vehicule  implements java.io.Serializable {
     }
 
     
-    @Column(name="puissanceFiscale", nullable=false)
-    public int getPuissanceFiscale() {
-        return this.puissanceFiscale;
-    }
-    
-    public void setPuissanceFiscale(int puissanceFiscale) {
-        this.puissanceFiscale = puissanceFiscale;
-    }
-
-    
     @Column(name="nombrePlaces", nullable=false)
     public int getNombrePlaces() {
         return this.nombrePlaces;
@@ -248,90 +262,13 @@ public class Vehicule  implements java.io.Serializable {
     }
 
     
-    @Column(name="pTAC", nullable=false, precision=22, scale=0)
-    public double getPtac() {
-        return this.ptac;
+    @Column(name="numeroChassis", nullable=false, length=40)
+    public String getNumeroChassis() {
+        return this.numeroChassis;
     }
     
-    public void setPtac(double ptac) {
-        this.ptac = ptac;
-    }
-
-    
-    @Column(name="poidsVide", nullable=false, precision=22, scale=0)
-    public double getPoidsVide() {
-        return this.poidsVide;
-    }
-    
-    public void setPoidsVide(double poidsVide) {
-        this.poidsVide = poidsVide;
-    }
-
-    
-    @Column(name="pTMCT", nullable=false, precision=22, scale=0)
-    public double getPtmct() {
-        return this.ptmct;
-    }
-    
-    public void setPtmct(double ptmct) {
-        this.ptmct = ptmct;
-    }
-
-    
-    @Column(name="remorque", nullable=false)
-    public boolean isRemorque() {
-        return this.remorque;
-    }
-    
-    public void setRemorque(boolean remorque) {
-        this.remorque = remorque;
-    }
-
-    
-    @Column(name="dureDeVie", nullable=false, precision=22, scale=0)
-    public double getDureDeVie() {
-        return this.dureDeVie;
-    }
-    
-    public void setDureDeVie(double dureDeVie) {
-        this.dureDeVie = dureDeVie;
-    }
-
-    
-    @Column(name="kilometrageVehicule", nullable=false, precision=22, scale=0)
-    public double getKilometrageVehicule() {
-        return this.kilometrageVehicule;
-    }
-    
-    public void setKilometrageVehicule(double kilometrageVehicule) {
-        this.kilometrageVehicule = kilometrageVehicule;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
-    public Set<Alerteasurance> getAlerteasurances() {
-        return this.alerteasurances;
-    }
-    
-    public void setAlerteasurances(Set<Alerteasurance> alerteasurances) {
-        this.alerteasurances = alerteasurances;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
-    public Set<Alertepneu> getAlertepneus() {
-        return this.alertepneus;
-    }
-    
-    public void setAlertepneus(Set<Alertepneu> alertepneus) {
-        this.alertepneus = alertepneus;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
-    public Set<Alertevisitetechnique> getAlertevisitetechniques() {
-        return this.alertevisitetechniques;
-    }
-    
-    public void setAlertevisitetechniques(Set<Alertevisitetechnique> alertevisitetechniques) {
-        this.alertevisitetechniques = alertevisitetechniques;
+    public void setNumeroChassis(String numeroChassis) {
+        this.numeroChassis = numeroChassis;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
@@ -352,13 +289,94 @@ public class Vehicule  implements java.io.Serializable {
         this.pneus = pneus;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
-    public Set<Vignette> getVignettes() {
-        return this.vignettes;
+    
+    @Column(name="poidsVide", nullable=false, precision=22, scale=0)
+    public double getPoidsVide() {
+        return this.poidsVide;
     }
     
-    public void setVignettes(Set<Vignette> vignettes) {
-        this.vignettes = vignettes;
+    public void setPoidsVide(double poidsVide) {
+        this.poidsVide = poidsVide;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idProprietaire", unique=true, nullable=false)
+    public Proprietairevehicule getProprietairevehicule() {
+        return this.proprietairevehicule;
+    }
+    
+    public void setProprietairevehicule(Proprietairevehicule proprietairevehicule) {
+        this.proprietairevehicule = proprietairevehicule;
+    }
+
+    
+    @Column(name="pTAC", nullable=false, precision=22, scale=0)
+    public double getPtac() {
+        return this.ptac;
+    }
+    
+    public void setPtac(double ptac) {
+        this.ptac = ptac;
+    }
+
+    
+    @Column(name="pTMCT", nullable=false, precision=22, scale=0)
+    public double getPtmct() {
+        return this.ptmct;
+    }
+    
+    public void setPtmct(double ptmct) {
+        this.ptmct = ptmct;
+    }
+
+    
+    @Column(name="puissanceFiscale", nullable=false)
+    public int getPuissanceFiscale() {
+        return this.puissanceFiscale;
+    }
+    
+    public void setPuissanceFiscale(int puissanceFiscale) {
+        this.puissanceFiscale = puissanceFiscale;
+    }
+
+    
+    @Column(name="remorque", nullable=false)
+    public boolean isRemorque() {
+        return this.remorque;
+    }
+    
+    public void setRemorque(boolean remorque) {
+        this.remorque = remorque;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idTypeCarburant", unique=true, nullable=false)
+    public Typecarburant getTypecarburant() {
+        return this.typecarburant;
+    }
+    
+    public void setTypecarburant(Typecarburant typecarburant) {
+        this.typecarburant = typecarburant;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="idTypeVehicule", unique=true, nullable=false)
+    public Typevehicule getTypevehicule() {
+        return this.typevehicule;
+    }
+    
+    public void setTypevehicule(Typevehicule typevehicule) {
+        this.typevehicule = typevehicule;
+    }
+
+    
+    @Column(name="usageVehicule", nullable=false, length=40)
+    public String getUsageVehicule() {
+        return this.usageVehicule;
+    }
+    
+    public void setUsageVehicule(String usageVehicule) {
+        this.usageVehicule = usageVehicule;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
@@ -371,30 +389,12 @@ public class Vehicule  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
-    public Set<Alertevidange> getAlertevidanges() {
-        return this.alertevidanges;
+    public Set<Vignette> getVignettes() {
+        return this.vignettes;
     }
     
-    public void setAlertevidanges(Set<Alertevidange> alertevidanges) {
-        this.alertevidanges = alertevidanges;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
-    public Set<Assurance> getAssurances() {
-        return this.assurances;
-    }
-    
-    public void setAssurances(Set<Assurance> assurances) {
-        this.assurances = assurances;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehicule")
-    public Set<Alertevignette> getAlertevignettes() {
-        return this.alertevignettes;
-    }
-    
-    public void setAlertevignettes(Set<Alertevignette> alertevignettes) {
-        this.alertevignettes = alertevignettes;
+    public void setVignettes(Set<Vignette> vignettes) {
+        this.vignettes = vignettes;
     }
 
 
