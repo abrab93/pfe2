@@ -35,7 +35,7 @@
 
 
                                     <p:dataTable id="tbl" var="user" value="#{utilisateurControler.users}"  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters} {header}"
-                                                 paginator="true" rowsPerPageTemplate="5,10,15,20,30,50" rows="5" style="margin-bottom:20px" resizableColumns="true"  draggableRows="true" rowKey="#{user.idUtilisateur}"  selection="#{utilisateurControler.user}" selectionMode="single" editable="true">                                  
+                                                 paginator="true" rowsPerPageTemplate="5,10,15,20,30,100" rows="20" style="margin-bottom:20px" resizableColumns="true"  draggableRows="true" rowKey="#{user.idUtilisateur}"  selection="#{utilisateurControler.user}" selectionMode="single" editable="true">                                  
                                         
                                         <p:ajax event="rowEdit" listener="#{utilisateurControler.onRowEdit}" update=":form:msgs" />
                                         <p:ajax event="rowEditCancel" listener="#{utilisateurControler.onRowCancel}" update=":form:msgs" />
@@ -118,8 +118,8 @@
                                          
                                         <p:column headerText="Blocked" exportable="false">
 
-                                            <p:commandButton rendered="#{user.blocked}" value="deblocker" action="#{utilisateurControler.updateEtatDeblo(user)}"/>
-                                            <p:commandButton rendered="#{!user.blocked}" value="blocker" action="#{utilisateurControler.updateEtatBlo(user)}"/>
+                                            <p:commandButton rendered="#{user.blocked}" value="deblocker" action="#{utilisateurControler.updateEtatDeblo(user)}" update="form:tbl"/>
+                                            <p:commandButton rendered="#{!user.blocked}" value="blocker" action="#{utilisateurControler.updateEtatBlo(user)}"  update="form:tbl" />
 
                                         </p:column>
                                         

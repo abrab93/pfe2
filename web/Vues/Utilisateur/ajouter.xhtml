@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-      
+
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -19,43 +19,61 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h1>Ajouter Utilisateur</h1>
+                                
+                                
+                                <p:dialog header="Add new Service" widgetVar="dlg" modal="true" showEffect="explode" hideEffect="bounce" resizable="false">
+                                    <h:form>
+                                        <h1><h:outputText value="Create/Edit"/></h1>
+                                        <h:panelGrid columns="2">
+                                            <h:outputLabel value="LibelleService:" for="libelleService" />
+                                            <h:inputText id="libelleService" value="#{serviceControler.service.libelleService}" title="LibelleService" required="true" requiredMessage="The LibelleService field is required."/>
+                                        </h:panelGrid>
+                                        <p:commandButton value="save" action="#{serviceControler.save()}" update="idForm:service" oncomplete="PF('dlg').hide()"></p:commandButton>
+                                    </h:form>
+                                </p:dialog>
 
                                 <f:view>
 
+                                  
+                                       
+                                    <h:form id="idForm">
+                                                <h1><h:outputText value="Create/Edit"/></h1>
+                                                
+                                                    <p:panel header="Personal Details">
+                                                        <p:messages />
 
-                                    <h:form>
-                                        <h1><h:outputText value="Create/Edit"/></h1>
-                                            <p:tab id="personal" title="Personal">
-                                                <p:panel header="Personal Details">
-                                                    <p:messages />
-                                                   <p:panelGrid columns="2" >
-                                                        <p:outputLabel value="NomUtilisateur:" for="nomUtilisateur" />
-                                                        <p:inputText id="nomUtilisateur" value="#{utilisateurControler.user.nomUtilisateur}" title="NomUtilisateur" required="true" requiredMessage="The NomUtilisateur field is required."/>
-                                                        <p:outputLabel value="PassWord:" for="passWord" />
-                                                        <p:password id="passWord" value="#{utilisateurControler.user.passWord}" feedback="true" required="true" requiredMessage="The PassWord field is required."/>
-                                                        <p:outputLabel value="Email:" for="email" />
-                                                        <p:inputText id="email" value="#{utilisateurControler.user.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
-                                                        
-                                                        <p:outputLabel value="Role:" for="role" />
-                                                        <p:inputText id="role" value="#{utilisateurControler.user.rrole}" title="Role" required="true" requiredMessage="The Role field is required."/>
-                                                        
-                                                        
-                                                        <p:outputLabel value="NomPrenom:" for="nomPrenom" />
-                                                        <p:inputText id="nomPrenom" value="#{utilisateurControler.user.nomPrenom}" title="NomPrenom" required="true" requiredMessage="The NomPrenom field is required."/>
-                                                        <p:outputLabel value="Service:" for="service" />
-                                                        <p:selectOneMenu id="service" value="#{utilisateurControler.user.service.idService}">
-                                                                        <f:selectItem itemLabel="Select One" itemValue="" />
-                                                                        <f:selectItems value="#{serviceControler.services}" var="item" itemLabel="#{item.libelleService}" itemValue="#{item.idService}" />
-                                                        </p:selectOneMenu>
+                                                        <p:panelGrid columns="2" >
+                                                            <p:outputLabel value="NomUtilisateur:" for="nomUtilisateur" />
+                                                            <p:inputText id="nomUtilisateur" value="#{utilisateurControler.user.nomUtilisateur}" title="NomUtilisateur" required="true" requiredMessage="The NomUtilisateur field is required."/>
+                                                            <p:outputLabel value="PassWord:" for="passWord" />
+                                                            <p:password id="passWord" value="#{utilisateurControler.user.passWord}" feedback="true" required="true" requiredMessage="The PassWord field is required."/>
+                                                            <p:outputLabel value="Email:" for="email" />
+                                                            <p:inputText id="email" value="#{utilisateurControler.user.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
 
-                                                         
-                                                        <p:commandButton value="Ajouter" action="#{utilisateurControler.save()}"></p:commandButton>
+                                                            <p:outputLabel value="Role:" for="role" />
+                                                            <p:inputText id="role" value="#{utilisateurControler.user.rrole}" title="Role" required="true" requiredMessage="The Role field is required."/>
+
+
+                                                            <p:outputLabel value="NomPrenom:" for="nomPrenom" />
+                                                            <p:inputText id="nomPrenom" value="#{utilisateurControler.user.nomPrenom}" title="NomPrenom" required="true" requiredMessage="The NomPrenom field is required."/>
+                                                            <p:outputLabel value="Service:" for="service" />
+                                                            <p:selectOneMenu id="service" value="#{utilisateurControler.user.service.idService}">
+                                                                            <f:selectItem itemLabel="Select One" itemValue="" />
+                                                                            <f:selectItems value="#{serviceControler.services}" var="item" itemLabel="#{item.libelleService}" itemValue="#{item.idService}" />
+                                                            </p:selectOneMenu>
+
+
+                                                            <p:commandButton value="Ajouter" action="#{utilisateurControler.save()}"></p:commandButton>
                                                         </p:panelGrid>
-                                                </p:panel>
-                                            </p:tab>
-                                    </h:form>
-                                    <h:form><h:commandLink value="new Service ..."  action="#{utilisateurControler.creatNewService()}"/> 
-                                    </h:form>
+                                                    </p:panel>
+                                                <p:commandLink id="showPops" value="newService" onclick="PF('dlg').show()"/>
+                                            </h:form>
+<!--                                            <h:form><h:commandLink value="new Service ..."  action="#{utilisateurControler.creatNewService()}"/> 
+                                            </h:form>-->
+                                            
+                                    
+
+
                                 </f:view>
 
                             </div>
@@ -70,7 +88,7 @@
 
 
         </ui:composition>
-        
+
     </h:body>
 </html>
 
