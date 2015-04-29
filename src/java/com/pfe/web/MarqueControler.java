@@ -10,6 +10,7 @@ import com.pfe.model.Marque;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,13 +36,14 @@ public class MarqueControler {
     return m;
     }
     
-    private String save(){
+    public void save(){
     marqueService.save(marque);
     marques.add(coloneMarque());
-    return null;
+    //return null;
     }
     
-    private void init(){
+    @PostConstruct
+    public  void init(){
     marques=marqueService.findAll();
     }
 

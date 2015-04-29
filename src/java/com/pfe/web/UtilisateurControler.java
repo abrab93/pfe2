@@ -90,7 +90,7 @@ public class UtilisateurControler {
     return utilisateurService.findAll();
     }
     
-    public String updateEtatDeblo(Utilisateur userEtat){
+    public void updateEtatDeblo(Utilisateur userEtat){
         int index=users.indexOf(userEtat);
         System.out.println("*********User avant l etat :"+userEtat);
         utilisateurService.deblocker(userEtat);
@@ -98,9 +98,9 @@ public class UtilisateurControler {
          utilisateurService.update(userEtat);
          users.set(index, userEtat);
       user=new Utilisateur();
-        return "list";
+        //return "list";
     }
-     public String updateEtatBlo(Utilisateur userEtat){
+     public void updateEtatBlo(Utilisateur userEtat){
         int index=users.indexOf(userEtat);
         System.out.println("*********User avant l etat :"+userEtat);
         utilisateurService.blocker(userEtat);
@@ -109,7 +109,7 @@ public class UtilisateurControler {
          users.set(index, userEtat);
          user=new Utilisateur();
       
-        return "list";
+        //return "list";
     }
      
      public String delete(Utilisateur user){

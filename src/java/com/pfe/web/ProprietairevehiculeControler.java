@@ -10,6 +10,7 @@ import com.pfe.model.Proprietairevehicule;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,12 +39,13 @@ public class ProprietairevehiculeControler {
         return p;
     }
 
-    private String save() {
+    public void save() {
         proprietairevehiculeService.save(proprietairevehicule);
         proprietairevehicules.add(clonneProprietairevehicule());
-        return null;
+        //return null;
     }
 
+    @PostConstruct
     private void init() {
         proprietairevehicules = proprietairevehiculeService.findAll();
     }
@@ -76,3 +78,4 @@ public class ProprietairevehiculeControler {
     }
 
 }
+/// hnaaaa kayn lmochkiiil

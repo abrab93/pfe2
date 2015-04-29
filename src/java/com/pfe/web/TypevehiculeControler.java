@@ -37,10 +37,10 @@ public class TypevehiculeControler {
     return t;
     }
     
-    public String save(){
+    public void save(){
         typevehiculeService.save(typevehicule);
         typevehicules.add(coloneTypevehicule());
-    return null;
+    //return null;
     }
 
     public Typevehicule getTypevehicule() {

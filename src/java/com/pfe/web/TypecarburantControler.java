@@ -37,10 +37,10 @@ public class TypecarburantControler {
         return t;
     }
     
-    private String save() {
+    public  void save() {
         typecarburantService.save(typecarburant);
         Typecarburants.add(cloneTypecarburant());
-        return null;
+        //return null;
     }
     
     @PostConstruct

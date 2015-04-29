@@ -37,10 +37,10 @@ public class ServiceControler {
     return clonedService;
     }
     
-    public String save(){
+    public void save(){
     serviceService.save(service);
     services.add(cloneService());
-    return "serviceAdded";
+    //return "serviceAdded";
     }
     
     @PostConstruct
